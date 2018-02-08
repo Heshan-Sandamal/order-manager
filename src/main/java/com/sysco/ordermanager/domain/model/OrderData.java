@@ -10,15 +10,23 @@ import javax.persistence.Table;
  * Created by vibodhab on 2/8/18.
  */
 @Entity
-@Table(name = "ORDER")
+@Table
 public class OrderData {
 
     @Id
-    @Column(name = "id")
+    @Column
     private String id;
 
-    @Column(name = "type")
+    @Column
     private String type;
+
+    public OrderData() {
+    }
+
+    public OrderData(String id, String type) {
+        this.id = id;
+        this.type = type;
+    }
 
     public String getId() {
         return id;

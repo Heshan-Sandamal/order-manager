@@ -36,8 +36,9 @@ mvn spring-boot:run
 
 The application is deployed at localhost:8080
 
-##Check Code Quality using  sonarQube
-######https://www.sonarqube.org/
+## Check Code Quality using  sonarQube
+### https://www.sonarqube.org/
 
 run sonarQube on localhost:9000
+
 run mvn sonar:sonar  to check the code quality

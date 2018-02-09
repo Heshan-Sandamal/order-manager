@@ -3,7 +3,9 @@
 ## Prerequisites
 
 jdk1.8.x
-mysql 
+
+mysql
+ 
 maven 3+
 
 ## Build the application
@@ -24,6 +26,7 @@ CREATE DATABASE sysco;
 change the application.properties file for following configurations
 
 *spring.jpa.hibernate.ddl-auto=create - for create the schema and destroy previous data
+
 *spring.jpa.hibernate.ddl-auto=update - for update the schema if necessary.
 
 

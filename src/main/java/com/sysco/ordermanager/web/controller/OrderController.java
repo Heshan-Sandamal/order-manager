@@ -27,6 +27,6 @@ public class OrderController {
     public ResponseEntity<Order> setOrder(@RequestBody Order order){
         orderService.setOrder(order);
 
-        return new ResponseEntity<>(order, HttpStatus.OK);
+        return new ResponseEntity<>(order, HttpStatus.CREATED);
     }
 }

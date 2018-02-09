@@ -20,12 +20,16 @@ public class OrderData {
     @Column
     private String type;
 
+    @Column
+    private int quantity;
+
     public OrderData() {
     }
 
-    public OrderData(String id, String type) {
+    public OrderData(String id, String type,int quantity ) {
         this.id = id;
         this.type = type;
+        this.quantity = quantity;
     }
 
     public String getId() {
@@ -42,5 +46,13 @@ public class OrderData {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

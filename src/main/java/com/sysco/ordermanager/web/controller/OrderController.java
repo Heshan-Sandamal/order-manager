@@ -1,6 +1,8 @@
 package com.sysco.ordermanager.web.controller;
 
+import com.sysco.ordermanager.service.OrderService;
 import com.sysco.ordermanager.web.api.Order;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/order")
 public class OrderController {
 
+    @Autowired
+    OrderService orderService;
+
     @GetMapping("/{id}")
     public Order getUser(@PathVariable String id){
-        return new Order("1", "new");
+        return orderService.getOrder(id);
     }
 }

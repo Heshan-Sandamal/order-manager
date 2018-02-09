@@ -10,7 +10,7 @@ maven 3+
 
 ## Build the application
 
-git clone https://github.com/niroshn/Spring-Project
+git clone https://github.com/Heshan-Sandamal/order-manager
 
 cd order-manager/
 

@@ -40,4 +40,4 @@ https://www.sonarqube.org/
 
 run sonarQube on localhost:9000
 
-run mvn sonar:sonar  to check the code quality
+mvn sonar:sonar  to check the code quality

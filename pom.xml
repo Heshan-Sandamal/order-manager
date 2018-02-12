@@ -80,6 +80,11 @@
 			<version>3.2</version>
 		</dependency>
 
+		<!--Aop dependency-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

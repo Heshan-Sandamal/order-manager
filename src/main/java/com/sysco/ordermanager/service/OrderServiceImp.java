@@ -24,4 +24,10 @@ public class OrderServiceImp implements OrderService {
     public Order getOrder(String id) {
         return orderConverter.convertOrderDataToOrder(orderRepository.getOne(id));
     }
+
+    @Override
+    public OrderData setOrder(Order order) {
+        return orderRepository.save(orderConverter.convertOrderToOrderData(order));
+    }
+
 }

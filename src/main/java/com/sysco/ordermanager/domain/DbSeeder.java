@@ -17,7 +17,7 @@ public class DbSeeder implements CommandLineRunner{
 
     @Override
     public void run(String... strings) throws Exception {
-        OrderData orderData = new OrderData("1", "type1");
+        OrderData orderData = new OrderData("1", "type1",3);
 
 //        orderRepository.deleteAll();
         orderRepository.save(orderData);

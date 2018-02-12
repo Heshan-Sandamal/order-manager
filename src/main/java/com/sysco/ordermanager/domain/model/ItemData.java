@@ -1,13 +1,30 @@
 package com.sysco.ordermanager.domain.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class ItemData {
 
-
+    @Id
+    @Column
     private String id;
+
+    @Column
     private String name;
+
+    @Column
     private String category;
+
+    @Column
     private String vendor;
-    private int stock;
+
+    @Column
+    private Integer stock;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id",nullable = true)
+    private OrderData order;
 
 
     public String getId() {

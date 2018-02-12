@@ -18,7 +18,7 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/{uid}")
     public Order getUser(@PathVariable String id){
         return orderService.getOrder(id);
     }
@@ -26,7 +26,7 @@ public class OrderController {
     @PostMapping("/")
     public ResponseEntity<Order> setOrder(@RequestBody Order order){
         orderService.setOrder(order);
-
         return new ResponseEntity<>(order, HttpStatus.CREATED);
     }
+
 }

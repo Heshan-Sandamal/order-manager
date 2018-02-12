@@ -1,4 +1,5 @@
 package com.sysco.ordermanager.service;
+import com.sysco.ordermanager.aspect.anotation.ValidateGetRequestId;
 import com.sysco.ordermanager.domain.model.OrderData;
 import com.sysco.ordermanager.domain.repository.OrderRepository;
 import com.sysco.ordermanager.service.converter.OrderConverter;
@@ -19,6 +20,7 @@ public class OrderServiceImp implements OrderService {
     private OrderConverter orderConverter;
 
     @Override
+    @ValidateGetRequestId
     public Order getOrder(String id) {
         return orderConverter.convertOrderDataToOrder(orderRepository.getOne(id));
     }

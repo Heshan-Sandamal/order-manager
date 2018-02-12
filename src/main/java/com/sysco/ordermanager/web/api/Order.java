@@ -7,6 +7,9 @@ public class Order {
     private String id;
     private String type;
 
+    public Order() {
+    }
+
     public Order(String id, String type) {
         this.id = id;
         this.type = type;

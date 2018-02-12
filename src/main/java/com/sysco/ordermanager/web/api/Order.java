@@ -11,6 +11,7 @@ public class Order {
     public Order(){}
 
     public Order(String id, String type, int quantity) {
+
         this.id = id;
         this.type = type;
         this.quantity = quantity;

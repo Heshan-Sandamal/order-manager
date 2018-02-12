@@ -12,7 +12,16 @@ public class OrderConverter {
     public Order convertOrderDataToOrder(OrderData orderData){
         return new Order(
                 orderData.getId(),
-                orderData.getType()
+                orderData.getType(),
+                orderData.getQuantity()
+        );
+    }
+
+    public OrderData convertOrderToOrderData(Order order){
+        return new OrderData(
+                order.getId(),
+                order.getType(),
+                order.getQuantity()
         );
     }
 }

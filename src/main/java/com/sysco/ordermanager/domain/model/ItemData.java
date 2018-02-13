@@ -1,14 +1,40 @@
 package com.sysco.ordermanager.domain.model;
 
-public class ItemData {
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+@Entity
+@Table
+public class ItemData implements Serializable{
 
+    @Id
+    @Column
     private String id;
-    private String name;
-    private String category;
-    private String vendor;
-    private int stock;
 
+    @Column
+    private String name;
+
+    @Column
+    private String category;
+
+    @Column
+    private String vendor;
+
+    @Column
+    private Integer stock;
+
+    @OneToMany(mappedBy = "item")
+    private Set<OrderItemData> itemOrders=new HashSet<>();
+
+    public ItemData(String id, String name, String category, String vendor, Integer stock) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.vendor = vendor;
+        this.stock = stock;
+    }
 
     public String getId() {
         return id;
@@ -47,4 +73,11 @@ public class ItemData {
     }
 
 
+    public Set<OrderItemData> getItemOrders() {
+        return itemOrders;
+    }
+
+    public void setItemOrders(Set<OrderItemData> itemOrders) {
+        this.itemOrders = itemOrders;
+    }
 }

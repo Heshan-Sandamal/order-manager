@@ -3,6 +3,8 @@ package com.sysco.ordermanager.domain.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -10,7 +12,7 @@ import java.util.Set;
  */
 @Entity
 @Table
-public class OrderData {
+public class OrderData implements Serializable{
 
     @Id
     @Column
@@ -23,14 +25,14 @@ public class OrderData {
     private int quantity;
 
     @OneToMany(mappedBy = "order")
-    private Set<ItemData> items;
+    private Set<OrderItemData> orderItems=new HashSet<>();
 
-    public Set<ItemData> getItems() {
-        return items;
+    public Set<OrderItemData> getItems() {
+        return orderItems;
     }
 
-    public void setItems(Set<ItemData> items) {
-        this.items = items;
+    public void setItems(Set<OrderItemData> orderItems) {
+        this.orderItems = orderItems;
     }
 
     public OrderData() {

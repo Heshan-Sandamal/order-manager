@@ -8,6 +8,14 @@ public class Item {
     private String vendor;
     private int stock;
 
+    public Item(String id, String name, String category, String vendor, int stock) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.vendor = vendor;
+        this.stock = stock;
+    }
+
     public String getId() {
         return id;
     }

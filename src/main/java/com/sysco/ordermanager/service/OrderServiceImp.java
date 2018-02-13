@@ -26,8 +26,8 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public OrderData setOrder(Order order) {
-        return orderRepository.save(orderConverter.convertOrderToOrderData(order));
+    public Order setOrder(Order order) {
+        return orderConverter.convertOrderDataToOrder(orderRepository.save(orderConverter.convertOrderToOrderData(order)));
     }
 
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class ItemConverter {
 
     public ItemData convertItemToItemData(Item item){
-        return new ItemData(item.getId(),item.getName(),item.getCategory(),item.getVendor(),item.getStock());
+        return new ItemData(item.getName(),item.getCategory(),item.getVendor(),item.getStock());
     }
 
     public Item convertItemDataToItem(ItemData itemData){

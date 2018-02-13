@@ -10,10 +10,19 @@ import java.util.Set;
 public class ItemData implements Serializable{
 
     @Id
-    @Column
-    private String id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private int id;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
 
     @Column
+
     private String name;
 
     @Column
@@ -28,15 +37,14 @@ public class ItemData implements Serializable{
     @OneToMany(mappedBy = "item")
     private Set<OrderItemData> itemOrders=new HashSet<>();
 
-    public ItemData(String id, String name, String category, String vendor, Integer stock) {
-        this.id = id;
+    public ItemData(String name, String category, String vendor, Integer stock) {
         this.name = name;
         this.category = category;
         this.vendor = vendor;
         this.stock = stock;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

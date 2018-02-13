@@ -1,10 +1,7 @@
 package com.sysco.ordermanager.domain.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by vibodhab on 2/8/18.
@@ -22,6 +19,10 @@ public class OrderData {
 
     @Column
     private int quantity;
+
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private UserData userData;
 
     public OrderData() {
     }

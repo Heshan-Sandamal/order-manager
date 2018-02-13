@@ -13,6 +13,6 @@ import java.util.List;
  */
 @Repository
 public interface OrderRepository extends JpaRepository<OrderData, String> {
-    public ArrayList<OrderData> findByUser(String id);
+    public ArrayList<OrderData> findByUserData(String id);
     public List<OrderData> findByType(String type);
 }

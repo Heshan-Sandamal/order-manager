@@ -6,6 +6,8 @@ import com.sysco.ordermanager.web.api.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 /**
  * Created by vibodhab on 2/8/18.
  */
@@ -28,4 +30,15 @@ public class OrderServiceImp implements OrderService {
         return orderRepository.save(orderConverter.convertOrderToOrderData(order));
     }
 
+
+    @Override
+    public ArrayList<Order> getUserOrders(String id) {
+        ArrayList<OrderData> userOrderData = orderRepository.findByUser(id);
+        ArrayList<Order> userOrders = new ArrayList<>();
+        for (int i = 0; i < userOrderData.size(); i++){
+            Order tempOrder = orderConverter.convertOrderDataToOrder(userOrderData.get(i));
+            userOrders.add(tempOrder);
+        }
+        return userOrders;
+    }
 }

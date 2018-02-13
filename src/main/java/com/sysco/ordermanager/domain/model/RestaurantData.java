@@ -1,9 +1,6 @@
 package com.sysco.ordermanager.domain.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -16,16 +13,16 @@ public class RestaurantData {
     @Column
     private String address;
 
-    @Column
-    private String owner;
+    @OneToOne
+    private UserData userData;
 
     public RestaurantData() {
     }
 
-    public RestaurantData(String id, String address, String owner) {
+    public RestaurantData(String id, String address, UserData userData) {
         this.id = id;
         this.address = address;
-        this.owner = owner;
+        this.userData = userData;
     }
 
     public String getId() {
@@ -44,11 +41,11 @@ public class RestaurantData {
         this.address = address;
     }
 
-    public String getOwner() {
-        return owner;
+    public UserData getUserData() {
+        return userData;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setUserData(UserData userData) {
+        this.userData = userData;
     }
 }

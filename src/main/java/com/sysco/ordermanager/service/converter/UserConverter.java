@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class UserConverter {
     public User convertUserDataToUser(UserData userData){
         return new User(
-                userData.getId(),
+                Long.toString(userData.getId()),
                 userData.getName(),
                 null
         );
@@ -17,16 +17,17 @@ public class UserConverter {
 
     public UserData convertUserToUserData(User user){
         return new UserData(
-                user.getId(),
+                Long.valueOf(user.getId()),
                 user.getName(),
                 user.getPassword()
         );
     }
 
-    public loginResponse convertUserDataToUserResponse(UserData userdata){
-        return new loginResponse(
-                userdata.getId(),
-                userdata.getName()
-        );
-    }
+    // TODO: 2/13/18
+//    public loginResponse convertUserDataToUserResponse(UserData userdata){
+//        return new loginResponse(
+//                userdata.getId(),
+//                userdata.getName()
+//        );
+//    }
 }

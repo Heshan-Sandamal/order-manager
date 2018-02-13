@@ -55,7 +55,7 @@ public class RestaurantServiceImpTest {
     @Before
     public void setup(){
         UserData userData = new UserData(
-                "1",
+                1,
                 "vibodha",
                 "123"
         );
@@ -64,7 +64,8 @@ public class RestaurantServiceImpTest {
                 "102/16/1, meegoda",
                 userData
         );
-        Mockito.when(restaurantRepository.getOne(restaurantData.getUserData().getId()))
+        // TODO: 2/13/18
+        Mockito.when(restaurantRepository.getOne(Long.toString(restaurantData.getUserData().getId())))
                 .thenReturn(restaurantData);
 
     }

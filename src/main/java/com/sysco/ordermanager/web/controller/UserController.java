@@ -15,14 +15,14 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @PostMapping("/signUp")
-    public ResponseEntity<loginResponse> signUp(@RequestBody User user){
-        return new ResponseEntity<>(userService.signUp(user), HttpStatus.CREATED);
-    }
-
-    @PostMapping("/signIn")
-    public ResponseEntity<loginResponse>signIn(@RequestBody LoginRequest loginRequest){
-        return new ResponseEntity<>(userService.signIn(loginRequest),HttpStatus.FOUND);
-    }
+// TODO: 2/13/18
+//    @PostMapping("/signUp")
+//    public ResponseEntity<loginResponse> signUp(@RequestBody User user){
+//        return new ResponseEntity<>(userService.signUp(user), HttpStatus.CREATED);
+//    }
+//
+//    @PostMapping("/signIn")
+//    public ResponseEntity<loginResponse>signIn(@RequestBody LoginRequest loginRequest){
+//        return new ResponseEntity<>(userService.signIn(loginRequest),HttpStatus.FOUND);
+//    }
 }

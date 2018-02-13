@@ -17,13 +17,14 @@ public class UserServiceImp implements UserService{
     @Autowired
     private UserConverter userConverter;
 
-    @Override
-    public loginResponse signUp(User user) {
-        return userConverter.convertUserDataToUserResponse(userRepository.save(userConverter.convertUserToUserData(user)));
-    }
-
-    @Override
-    public loginResponse signIn(LoginRequest loginRequest) {
-        return userConverter.convertUserDataToUserResponse(userRepository.findByNameAndPassword(loginRequest.getName(), loginRequest.getPassword()));
-    }
+    // TODO: 2/13/18
+//    @Override
+//    public loginResponse signUp(User user) {
+//        return userConverter.convertUserDataToUserResponse(userRepository.save(userConverter.convertUserToUserData(user)));
+//    }
+//
+//    @Override
+//    public loginResponse signIn(LoginRequest loginRequest) {
+//        return userConverter.convertUserDataToUserResponse(userRepository.findByNameAndPassword(loginRequest.getName(), loginRequest.getPassword()));
+//    }
 }

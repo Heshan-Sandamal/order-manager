@@ -11,7 +11,7 @@ public class UserData {
 
     @Id
     @Column
-    private String id;
+    private long id;
 
     @Column
     private String name;
@@ -22,17 +22,17 @@ public class UserData {
     public UserData() {
     }
 
-    public UserData(String id, String name, String password) {
+    public UserData(long id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

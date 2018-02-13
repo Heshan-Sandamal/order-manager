@@ -1,11 +1,11 @@
 package com.sysco.ordermanager.domain.model;
 
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
 
 /**
  * Created by vibodhab on 2/8/18.
@@ -24,6 +24,7 @@ public class OrderData implements Serializable{
     @Column
     private int quantity;
 
+
     @OneToMany(mappedBy = "order")
     private Set<OrderItemData> orderItems=new HashSet<>();
 
@@ -34,6 +35,11 @@ public class OrderData implements Serializable{
     public void setItems(Set<OrderItemData> orderItems) {
         this.orderItems = orderItems;
     }
+
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=true)
+    private UserData userData;
+
 
     public OrderData() {
     }

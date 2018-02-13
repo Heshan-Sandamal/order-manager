@@ -47,3 +47,9 @@ https://www.sonarqube.org/
 run sonarQube on localhost:9000
 
 mvn sonar:sonar  to check the code quality
+
+## Tesing
+
+create a test database,
+
+CREATE DATABASE sysco_test;

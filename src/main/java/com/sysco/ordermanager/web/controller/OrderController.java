@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by vibodhab on 2/8/18.
  */
@@ -19,7 +21,7 @@ public class OrderController {
     OrderService orderService;
 
     @GetMapping("/{id}")
-    public Order getUser(@PathVariable String id){
+    public Order getOrder(@PathVariable String id){
         return orderService.getOrder(id);
     }
 
@@ -28,4 +30,12 @@ public class OrderController {
         orderService.setOrder(order);
         return new ResponseEntity<>(order, HttpStatus.CREATED);
     }
+
+    @PostMapping("/list")
+    public ResponseEntity<List<Order>> update(@RequestBody List<Order> orders) {
+        orderService.setOrders(orders);
+        return new ResponseEntity<>(orders, HttpStatus.CREATED);
+    }
+
+
 }

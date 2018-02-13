@@ -33,7 +33,7 @@ public class RestaurantRepositoryTest {
     public void createRestaurant(){
 
         UserData userData = new UserData(
-                1,
+                (long)1,
                 "vibodha",
                 "123"
         );

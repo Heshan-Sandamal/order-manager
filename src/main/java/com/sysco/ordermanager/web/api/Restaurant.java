@@ -1,18 +1,20 @@
 package com.sysco.ordermanager.web.api;
 
+import com.sysco.ordermanager.domain.model.UserData;
+
 public class Restaurant {
 
     private String id;
     private String address;
-    private String owner;
+    private User user;
 
     public Restaurant() {
     }
 
-    public Restaurant(String id, String address, String owner) {
+    public Restaurant(String id, String address, User user) {
         this.id = id;
         this.address = address;
-        this.owner = owner;
+        this.user = user;
     }
 
     public String getId() {
@@ -31,11 +33,11 @@ public class Restaurant {
         this.address = address;
     }
 
-    public String getOwner() {
-        return owner;
+    public User getUser() {
+        return user;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

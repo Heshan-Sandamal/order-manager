@@ -65,6 +65,8 @@ public class RestaurantServiceImpTest {
                 userData
         );
         // TODO: 2/13/18
+//        remove long to string
+
         Mockito.when(restaurantRepository.getOne(Long.toString(restaurantData.getUserData().getId())))
                 .thenReturn(restaurantData);
 

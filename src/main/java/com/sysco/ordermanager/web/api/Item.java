@@ -1,14 +1,17 @@
 package com.sysco.ordermanager.web.api;
 
-public class Item {
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-    private String id;
+public class Item {
+    private int id;
     private String name;
     private String category;
     private String vendor;
     private int stock;
 
-    public Item(String id, String name, String category, String vendor, int stock) {
+    public Item(int id, String name, String category, String vendor, int stock) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -16,11 +19,18 @@ public class Item {
         this.stock = stock;
     }
 
-    public String getId() {
+    public Item(String name, String category, String vendor, int stock) {
+        this.name = name;
+        this.category = category;
+        this.vendor = vendor;
+        this.stock = stock;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

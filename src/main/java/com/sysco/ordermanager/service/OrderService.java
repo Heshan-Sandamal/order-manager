@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public interface OrderService {
 
     public Order getOrder(String id);
-    public OrderData setOrder(Order order);
+    public Order setOrder(Order order);
     public ArrayList<Order> getUserOrders(String id);
 
 }

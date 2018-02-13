@@ -12,9 +12,10 @@ import java.util.Set;
  */
 @Entity
 @Table
-public class OrderData implements Serializable{
+public class OrderData implements Serializable {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column
     private String id;
 
@@ -25,20 +26,10 @@ public class OrderData implements Serializable{
     private int quantity;
 
     @OneToMany(mappedBy = "order")
-    private Set<OrderItemData> orderItems=new HashSet<>();
-
-    public Set<OrderItemData> getItems() {
-        return orderItems;
-    }
-
-    public void setItems(Set<OrderItemData> orderItems) {
-        this.orderItems = orderItems;
-    }
-
+    private Set<OrderItemData> orderItems = new HashSet<>();
     @ManyToOne
-    @JoinColumn(name="user_id", nullable=true)
+    @JoinColumn(name = "user_id", nullable = false)
     private UserData userData;
-
 
     public OrderData() {
     }
@@ -47,14 +38,6 @@ public class OrderData implements Serializable{
         this.id = id;
         this.type = type;
         this.quantity = quantity;
-        this.userData = userData;
-    }
-
-    public UserData getUserData() {
-        return userData;
-    }
-
-    public void setUserData(UserData userData) {
         this.userData = userData;
     }
 
@@ -80,5 +63,21 @@ public class OrderData implements Serializable{
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Set<OrderItemData> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(Set<OrderItemData> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public UserData getUserData() {
+        return userData;
+    }
+
+    public void setUserData(UserData userData) {
+        this.userData = userData;
     }
 }

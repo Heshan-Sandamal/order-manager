@@ -19,18 +19,26 @@ public class OrderData {
 
     @Column
     private int quantity;
-
     @ManyToOne
-    @JoinColumn(name="user_id", nullable=false)
+    @JoinColumn(name = "user_id", nullable = false)
     private UserData userData;
 
     public OrderData() {
     }
 
-    public OrderData(String id, String type,int quantity ) {
+    public OrderData(String id, String type, int quantity, UserData userData) {
         this.id = id;
         this.type = type;
         this.quantity = quantity;
+        this.userData = userData;
+    }
+
+    public UserData getUserData() {
+        return userData;
+    }
+
+    public void setUserData(UserData userData) {
+        this.userData = userData;
     }
 
     public String getId() {

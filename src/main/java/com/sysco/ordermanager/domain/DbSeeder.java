@@ -1,6 +1,7 @@
 package com.sysco.ordermanager.domain;
 
 import com.sysco.ordermanager.domain.model.OrderData;
+import com.sysco.ordermanager.domain.model.UserData;
 import com.sysco.ordermanager.domain.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,7 +18,7 @@ public class DbSeeder implements CommandLineRunner{
 
     @Override
     public void run(String... strings) throws Exception {
-        OrderData orderData = new OrderData("1", "type1",3);
+        OrderData orderData = new OrderData("1", "type1",3, new UserData("1","Shanika", "123"));
 
 //        orderRepository.deleteAll();
         orderRepository.save(orderData);

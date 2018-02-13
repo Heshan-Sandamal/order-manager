@@ -1,9 +1,8 @@
 package com.sysco.ordermanager.domain.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Set;
 
 @Entity
 @Table
@@ -18,6 +17,9 @@ public class UserData {
 
     @Column
     private String password;
+
+    @OneToMany(mappedBy="userData")
+    private Set<OrderData> orders;
 
     public UserData() {
     }

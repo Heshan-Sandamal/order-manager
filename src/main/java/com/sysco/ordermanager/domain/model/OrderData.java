@@ -1,17 +1,18 @@
 package com.sysco.ordermanager.domain.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 
 /**
  * Created by vibodhab on 2/8/18.
  */
 @Entity
 @Table
-public class OrderData {
+public class OrderData implements Serializable {
 
     @Id
     @Column
@@ -23,13 +24,20 @@ public class OrderData {
     @Column
     private int quantity;
 
+    @OneToMany(mappedBy = "order")
+    private Set<OrderItemData> orderItems = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserData userData;
+
     public OrderData() {
     }
 
-    public OrderData(String id, String type,int quantity ) {
+    public OrderData(String id, String type, int quantity, UserData userData) {
         this.id = id;
         this.type = type;
         this.quantity = quantity;
+        this.userData = userData;
     }
 
     public String getId() {
@@ -54,5 +62,21 @@ public class OrderData {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Set<OrderItemData> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(Set<OrderItemData> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public UserData getUserData() {
+        return userData;
+    }
+
+    public void setUserData(UserData userData) {
+        this.userData = userData;
     }
 }

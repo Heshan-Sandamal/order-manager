@@ -20,13 +20,6 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-
-    @GetMapping("/{id}/{uid}")
-    public Order getUser(@PathVariable String id) {
-        return orderService.getOrder(id);
-    }
-
-
     @GetMapping("/{order_id}")
     public Order getOrder(@PathVariable String order_id){
         return orderService.getOrder(order_id);
@@ -39,7 +32,7 @@ public class OrderController {
     }
 
     @GetMapping("/user/{user_id}")
-    public ArrayList<Order> getOrders(@PathVariable String user_id){
+    public ArrayList<Order> getUserOrders(@PathVariable String user_id){
         return orderService.getUserOrders(user_id);
     }
 

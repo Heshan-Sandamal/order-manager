@@ -18,11 +18,16 @@ public class OrderConverter {
     @Autowired
     OrderItemConverter orderItemConverter;
 
+    @Autowired
+    private UserConverter userConverter;
+
     public Order convertOrderDataToOrder(OrderData orderData) {
+
         final Order order = new Order(
                 orderData.getId(),
                 orderData.getType(),
-                orderData.getQuantity()
+                orderData.getQuantity(),
+                userConverter.convertUserDataToUser(orderData.getUserData())
         );
         final Set<OrderItem> orderItemSet = orderItemConverter.convertOrderItemDataListToOrderItemList(orderData.getItems(), order);
         order.setOrderItems(orderItemSet);
@@ -32,9 +37,9 @@ public class OrderConverter {
     public OrderData convertOrderToOrderData(Order order) {
 
         final OrderData orderData = new OrderData(
-                order.getId(),
                 order.getType(),
-                order.getQuantity()
+                order.getQuantity(),
+                userConverter.convertUserToUserData(order.getUser())
         );
 
         final Set<OrderItemData>

@@ -9,9 +9,15 @@ public class Order {
     private Long id;
     private String type;
     private int quantity;
+    private User user;
     private Set<OrderItem> orderItems;
 
-    public Order(){}
+    public Order(Long id, String type, int quantity, User user) {
+        this.id = id;
+        this.type = type;
+        this.quantity = quantity;
+        this.user = user;
+    }
 
 
     public Order(Long id, String type, int quantity) {
@@ -30,6 +36,20 @@ public class Order {
     public Order(String type, int quantity) {
         this.type = type;
         this.quantity = quantity;
+    }
+
+    public Order(String type, int quantity, User user) {
+        this.type = type;
+        this.quantity = quantity;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getId() {

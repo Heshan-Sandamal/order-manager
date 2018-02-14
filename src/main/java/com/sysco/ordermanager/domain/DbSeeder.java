@@ -1,16 +1,16 @@
 package com.sysco.ordermanager.domain;
 
-import com.sysco.ordermanager.domain.model.OrderData;
-import com.sysco.ordermanager.domain.model.OrderItemData;
-import com.sysco.ordermanager.domain.model.OrderItemId;
-import com.sysco.ordermanager.domain.repository.ItemRepository;
+import com.sysco.ordermanager.domain.model.UserData;
 import com.sysco.ordermanager.domain.repository.OrderRepository;
+import com.sysco.ordermanager.domain.repository.UserRepository;
 import com.sysco.ordermanager.service.ItemService;
 import com.sysco.ordermanager.service.OrderService;
 import com.sysco.ordermanager.service.converter.ItemConverter;
+import com.sysco.ordermanager.service.converter.UserConverter;
 import com.sysco.ordermanager.web.api.Item;
 import com.sysco.ordermanager.web.api.Order;
 import com.sysco.ordermanager.web.api.OrderItem;
+import com.sysco.ordermanager.web.api.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -18,11 +18,14 @@ import org.springframework.stereotype.Component;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
  * Created by vibodhab on 2/8/18.
  */
 @Component
-public class DbSeeder implements CommandLineRunner{
+public class DbSeeder implements CommandLineRunner {
+    @Autowired
+    ItemService itemService;
 
     @Autowired
     private OrderRepository orderRepository;
@@ -30,11 +33,16 @@ public class DbSeeder implements CommandLineRunner{
     @Autowired
     OrderService orderService;
 
+
     @Autowired
-    ItemService itemService;
+    private UserRepository userRepository;
+
 
     @Autowired
     ItemConverter itemConverter;
+
+    @Autowired
+    UserConverter userConverter;
 
     @Override
     public void run(String... strings) throws Exception {
@@ -43,13 +51,17 @@ public class DbSeeder implements CommandLineRunner{
 
 //        orderRepository.deleteAll();
 //        orderRepository.save(orderData);
+
+        User user = new User("1", "Shanika", "123");
+        userRepository.save(userConverter.convertUserToUserData(user));
+
         Item item = new Item("test-item", "abc", "xxx", 100);
         item = itemService.addItem(item);
 
 
-        Order order=new Order("23",2);
+        Order order = new Order("23",  2,user);
 
-        OrderItem oid=new OrderItem(order,item,22.3);
+        OrderItem oid = new OrderItem(order, item, 22.3);
 
         final Set<OrderItem> orderItems = new HashSet<>();
         orderItems.add(oid);
@@ -59,9 +71,13 @@ public class DbSeeder implements CommandLineRunner{
         orderService.setOrder(order);
 
 
+//        userRepository.deleteAll();
+//        orderRepository.deleteAll();
 
-
-
+//        OrderData orderData = new OrderData("1", "type1", 3, userData);
+//        orderRepository.save(orderData);
+//        orderRepository.save(orderData);
+//        itemService.addItem(new Item("test-item", "abc", "xxx", 100));
 
     }
 }

@@ -34,7 +34,7 @@ public class ItemData implements Serializable{
     @Column
     private Integer stock;
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "orderItemId.item")
     private Set<OrderItemData> itemOrders=new HashSet<>();
 
     public ItemData(String name, String category, String vendor, Integer stock) {

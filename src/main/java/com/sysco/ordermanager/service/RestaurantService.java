@@ -4,6 +4,6 @@ import com.sysco.ordermanager.web.api.Restaurant;
 
 public interface RestaurantService {
 
-    public Restaurant getRestaurant(String id);
-    public Restaurant addRestaurant(Restaurant restaurant);
+    Restaurant getRestaurant(String id);
+    Restaurant addRestaurant(Restaurant restaurant);
 }

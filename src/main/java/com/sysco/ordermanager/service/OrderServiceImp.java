@@ -30,7 +30,8 @@ public class OrderServiceImp implements OrderService {
 
     @Override
     public Order setOrder(Order order) {
-        return orderConverter.convertOrderDataToOrder(orderRepository.save(orderConverter.convertOrderToOrderData(order)));
+        OrderData orderData = orderConverter.convertOrderToOrderData(order);
+        return orderConverter.convertOrderDataToOrder(orderRepository.save(orderData));
     }
 
     @Override
@@ -41,7 +42,6 @@ public class OrderServiceImp implements OrderService {
                 ordersDataList.add(orderConverter.convertOrderToOrderData(order)));
         orderRepository.save(ordersDataList);
     }
-
 
     @Override
     public ArrayList<Order> getUserOrders(String id) {

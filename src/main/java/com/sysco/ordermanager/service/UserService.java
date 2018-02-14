@@ -5,6 +5,6 @@ import com.sysco.ordermanager.web.api.User;
 import com.sysco.ordermanager.web.api.loginResponse;
 
 public interface UserService {
-    public loginResponse signUp(User user);
-    public loginResponse signIn(LoginRequest loginRequest);
+    loginResponse signUp(User user);
+    loginResponse signIn(LoginRequest loginRequest);
 }

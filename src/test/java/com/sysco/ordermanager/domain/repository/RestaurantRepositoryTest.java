@@ -7,13 +7,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
-import javax.persistence.EntityManager;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,7 +27,7 @@ public class RestaurantRepositoryTest {
     private TestEntityManager entityManager;
 
     @Test
-    public void createRestaurant(){
+    public void createRestaurant() {
 
         UserData userData = new UserData(
                 "1",
@@ -55,5 +52,4 @@ public class RestaurantRepositoryTest {
         assertThat(userFound).isEqualTo(restaurantData.getUserData());
 
     }
-
 }

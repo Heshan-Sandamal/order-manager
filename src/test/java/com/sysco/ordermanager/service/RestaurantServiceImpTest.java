@@ -75,7 +75,7 @@ public class RestaurantServiceImpTest {
     @Test
     public void getRestaurant() {
         Restaurant restaurant = restaurantService.getRestaurant("1");
-        assertThat(restaurant.getUser().getName()).isEqualTo("vibodha");
+        assertThat(restaurant.getUserDTO().getName()).isEqualTo("vibodha");
     }
 
 //    @Test

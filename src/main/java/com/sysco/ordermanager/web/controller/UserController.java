@@ -2,13 +2,6 @@ package com.sysco.ordermanager.web.controller;
 
 import com.sysco.ordermanager.domain.model.UserData;
 import com.sysco.ordermanager.domain.repository.UserRepository;
-import com.sysco.ordermanager.service.UserService;
-import com.sysco.ordermanager.web.api.LoginRequest;
-import com.sysco.ordermanager.web.api.User;
-import com.sysco.ordermanager.web.api.loginResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +17,7 @@ public class UserController {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/sign-up")
     public void signUp(@RequestBody UserData user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);

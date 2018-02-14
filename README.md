@@ -53,3 +53,8 @@ mvn sonar:sonar  to check the code quality
 create a test database,
 
 CREATE DATABASE sysco_test;
+
+
+##
+only allow to swagger
+https://stackoverflow.com/questions/37671125/how-to-configure-spring-security-to-allow-swagger-url-to-be-accessed-without-aut/37683455#37683455

@@ -34,12 +34,6 @@ public class RestaurantServiceImp implements RestaurantService{
 
         RestaurantData restaurantData = restaurantConverter.convertRestaurantToRestaurantData(restaurant);
 
-        UserData userData = userRepository.findOne(restaurantData.getId());
-        if (userData == null){
-            throw new UserNotFoundException();
-        }
-        restaurantData.setUserData(userData);
-
         return restaurantConverter.convertRestaurantDataToRestaurant(restaurantRepository.save(restaurantData));
     }
 }

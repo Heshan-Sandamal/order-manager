@@ -3,6 +3,7 @@ package com.sysco.ordermanager.service;
 import com.sysco.ordermanager.domain.model.RestaurantData;
 import com.sysco.ordermanager.domain.model.UserData;
 import com.sysco.ordermanager.domain.repository.RestaurantRepository;
+import com.sysco.ordermanager.domain.repository.UserRepository;
 import com.sysco.ordermanager.service.converter.RestaurantConverter;
 import com.sysco.ordermanager.service.converter.UserConverter;
 import com.sysco.ordermanager.web.api.Restaurant;
@@ -19,7 +20,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.assertj.core.api.Assertions.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles(profiles = {"test"})
 public class RestaurantServiceImpTest {
 
     @TestConfiguration
@@ -52,6 +52,9 @@ public class RestaurantServiceImpTest {
     @MockBean
     private RestaurantRepository restaurantRepository;
 
+    @MockBean
+    private UserRepository userRepository;
+
     @Before
     public void setup(){
         UserData userData = new UserData(
@@ -64,8 +67,11 @@ public class RestaurantServiceImpTest {
                 "102/16/1, meegoda",
                 userData
         );
-        Mockito.when(restaurantRepository.getOne(restaurantData.getUserData().getId()))
+        Mockito.when(restaurantRepository.getOne("1"))
                 .thenReturn(restaurantData);
+
+        Mockito.when(userRepository.getOne("1"))
+                .thenReturn(userData);
 
     }
 

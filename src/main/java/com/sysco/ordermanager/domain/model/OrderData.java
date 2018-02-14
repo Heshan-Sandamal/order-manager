@@ -15,8 +15,8 @@ import java.util.Set;
 public class OrderData implements Serializable{
 
     @Id
-    @Column
-    private String id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
 
     @Column
     private String type;
@@ -25,7 +25,7 @@ public class OrderData implements Serializable{
     private int quantity;
 
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "orderItemId.order",cascade ={ CascadeType.ALL })
     private Set<OrderItemData> orderItems=new HashSet<>();
 
     public Set<OrderItemData> getItems() {
@@ -44,17 +44,25 @@ public class OrderData implements Serializable{
     public OrderData() {
     }
 
-    public OrderData(String id, String type,int quantity ) {
+    public OrderData(Long id, String type, int quantity, Set<OrderItemData> orderItems) {
+        this.id = id;
+        this.type = type;
+        this.quantity = quantity;
+        this.orderItems = orderItems;
+        this.userData = userData;
+    }
+
+    public OrderData(Long id, String type, int quantity) {
         this.id = id;
         this.type = type;
         this.quantity = quantity;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

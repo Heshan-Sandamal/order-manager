@@ -6,25 +6,37 @@ import java.util.Set;
  * Created by vibodhab on 2/8/18.
  */
 public class Order {
-    private String id;
+    private Long id;
     private String type;
     private int quantity;
     private Set<OrderItem> orderItems;
 
     public Order(){}
 
-    public Order(String id, String type, int quantity) {
 
+    public Order(Long id, String type, int quantity) {
         this.id = id;
         this.type = type;
         this.quantity = quantity;
     }
 
-    public String getId() {
+    public Order(Long id, String type, int quantity, Set<OrderItem> orderItems) {
+        this.id = id;
+        this.type = type;
+        this.quantity = quantity;
+        this.orderItems = orderItems;
+    }
+
+    public Order(String type, int quantity) {
+        this.type = type;
+        this.quantity = quantity;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -12,38 +12,26 @@ import java.io.Serializable;
 @Table
 public class OrderItemData implements Serializable{
 
-
-    @Id
-    @ManyToOne
-    private OrderData order;
-
-    @Id
-    @ManyToOne
-    private ItemData item;
+    @EmbeddedId
+    private OrderItemId orderItemId;
 
     @Column
     private double amount;
 
-    public OrderItemData(OrderData order, ItemData item, double amount) {
-        this.order = order;
-        this.item = item;
+    public OrderItemData() {
+    }
+
+    public OrderItemData(OrderItemId orderItemId, double amount) {
+        this.orderItemId=orderItemId;
         this.amount = amount;
     }
 
-    public OrderData getOrder() {
-        return order;
+    public OrderItemId getOrderItemId() {
+        return orderItemId;
     }
 
-    public void setOrder(OrderData order) {
-        this.order = order;
-    }
-
-    public ItemData getItem() {
-        return item;
-    }
-
-    public void setItem(ItemData item) {
-        this.item = item;
+    public void setOrderItemId(OrderItemId orderItemId) {
+        this.orderItemId = orderItemId;
     }
 
     public double getAmount() {

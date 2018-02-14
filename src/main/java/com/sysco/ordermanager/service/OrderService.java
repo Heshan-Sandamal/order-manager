@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public interface OrderService {
 
-    public Order getOrder(String id);
-    public Order setOrder(Order order);
-    public ArrayList<Order> getUserOrders(String id);
+    Order getOrder(String id);
+    Order setOrder(Order order);
+    ArrayList<Order> getUserOrders(String id);
 
 }

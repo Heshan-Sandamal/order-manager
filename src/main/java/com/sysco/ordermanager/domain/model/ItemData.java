@@ -6,23 +6,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "item")
 public class ItemData implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
     @Column
-
     private String name;
 
     @Column
@@ -34,7 +25,7 @@ public class ItemData implements Serializable{
     @Column
     private Integer stock;
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "itemData")
     private Set<OrderItemData> itemOrders=new HashSet<>();
 
     public ItemData(String name, String category, String vendor, Integer stock) {
@@ -44,6 +35,13 @@ public class ItemData implements Serializable{
         this.stock = stock;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
     public int getId() {
         return id;
     }

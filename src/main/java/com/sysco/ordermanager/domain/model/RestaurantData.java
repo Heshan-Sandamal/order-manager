@@ -3,7 +3,7 @@ package com.sysco.ordermanager.domain.model;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "restaurant")
 public class RestaurantData {
 
     @Id

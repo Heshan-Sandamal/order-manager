@@ -11,7 +11,7 @@ import java.util.Set;
  * Created by vibodhab on 2/8/18.
  */
 @Entity
-@Table
+@Table(name = "order_t")
 public class OrderData implements Serializable {
 
     @Id
@@ -24,8 +24,9 @@ public class OrderData implements Serializable {
     @Column
     private int quantity;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "orderData")
     private Set<OrderItemData> orderItems = new HashSet<>();
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserData userData;

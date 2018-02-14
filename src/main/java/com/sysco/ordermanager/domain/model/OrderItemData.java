@@ -9,41 +9,41 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table
+@Table(name = "order_item")
 public class OrderItemData implements Serializable{
 
 
     @Id
     @ManyToOne
-    private OrderData order;
+    private OrderData orderData;
 
     @Id
     @ManyToOne
-    private ItemData item;
+    private ItemData itemData;
 
     @Column
     private double amount;
 
     public OrderItemData(OrderData order, ItemData item, double amount) {
-        this.order = order;
-        this.item = item;
+        this.orderData = order;
+        this.itemData = item;
         this.amount = amount;
     }
 
     public OrderData getOrder() {
-        return order;
+        return orderData;
     }
 
     public void setOrder(OrderData order) {
-        this.order = order;
+        this.orderData = order;
     }
 
     public ItemData getItem() {
-        return item;
+        return itemData;
     }
 
     public void setItem(ItemData item) {
-        this.item = item;
+        this.itemData = item;
     }
 
     public double getAmount() {

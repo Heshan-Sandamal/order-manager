@@ -2,6 +2,7 @@ package com.sysco.ordermanager.service;
 
 import com.sysco.ordermanager.aspect.Exception.UserNotFoundException;
 import com.sysco.ordermanager.aspect.anotation.ValidateGetRequestId;
+import com.sysco.ordermanager.aspect.anotation.ValidateUserNotFound;
 import com.sysco.ordermanager.domain.model.RestaurantData;
 import com.sysco.ordermanager.domain.model.UserData;
 import com.sysco.ordermanager.domain.repository.RestaurantRepository;
@@ -30,10 +31,9 @@ public class RestaurantServiceImp implements RestaurantService{
     }
 
     @Override
+    @ValidateUserNotFound
     public Restaurant addRestaurant(Restaurant restaurant) {
-
         RestaurantData restaurantData = restaurantConverter.convertRestaurantToRestaurantData(restaurant);
-
         return restaurantConverter.convertRestaurantDataToRestaurant(restaurantRepository.save(restaurantData));
     }
 }

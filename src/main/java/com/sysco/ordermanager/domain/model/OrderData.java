@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
+
 /**
  * Created by vibodhab on 2/8/18.
  */
@@ -29,6 +30,8 @@ public class OrderData implements Serializable {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserData userData;
+    @Column
+    private Status status;
 
     public OrderData() {
     }
@@ -38,6 +41,15 @@ public class OrderData implements Serializable {
         this.type = type;
         this.quantity = quantity;
         this.userData = userData;
+        this.status = Status.CREATED;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public String getId() {

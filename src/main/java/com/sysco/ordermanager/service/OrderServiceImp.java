@@ -1,5 +1,6 @@
 package com.sysco.ordermanager.service;
 import com.sysco.ordermanager.domain.model.OrderData;
+import com.sysco.ordermanager.domain.model.Status;
 import com.sysco.ordermanager.domain.repository.OrderRepository;
 import com.sysco.ordermanager.service.converter.OrderConverter;
 import com.sysco.ordermanager.web.api.Order;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by vibodhab on 2/8/18.
@@ -51,4 +53,15 @@ public class OrderServiceImp implements OrderService {
         }
         return userOrders;
     }
+
+    @Override
+    public Order cancelOrder(String id) {
+        OrderData orderData = orderRepository.getOne(id);
+        if(orderData.getStatus() != Status.DISPATCHED){
+            orderData.setStatus(Status.CANCELLED);
+        }
+        return orderConverter.convertOrderDataToOrder(orderRepository.save(orderData));
+    }
+
+
 }

@@ -16,5 +16,6 @@ public interface OrderService {
     void setOrders(List<Order> orders);
     public Order getOrder(String id);
     public ArrayList<Order> getUserOrders(String id);
+    public Order cancelOrder(String id);
 
 }

@@ -6,23 +6,42 @@ import java.util.Set;
  * Created by vibodhab on 2/8/18.
  */
 public class Order {
-    private String id;
+    private Long id;
     private String type;
     private int quantity;
     private User user;
     private Set<OrderItem> orderItems;
 
-    public Order(String id, String type, int quantity, User user) {
+    public Order(Long id, String type, int quantity, User user) {
         this.id = id;
         this.type = type;
         this.quantity = quantity;
         this.user = user;
     }
 
-    public Order(String id, String type, int quantity) {
+
+    public Order(Long id, String type, int quantity) {
         this.id = id;
         this.type = type;
         this.quantity = quantity;
+    }
+
+    public Order(Long id, String type, int quantity, Set<OrderItem> orderItems) {
+        this.id = id;
+        this.type = type;
+        this.quantity = quantity;
+        this.orderItems = orderItems;
+    }
+
+    public Order(String type, int quantity) {
+        this.type = type;
+        this.quantity = quantity;
+    }
+
+    public Order(String type, int quantity, User user) {
+        this.type = type;
+        this.quantity = quantity;
+        this.user = user;
     }
 
     public User getUser() {
@@ -33,11 +52,11 @@ public class Order {
         this.user = user;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

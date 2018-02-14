@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
+
 /**
  * Created by vibodhab on 2/8/18.
  */
@@ -15,8 +16,8 @@ import java.util.Set;
 public class OrderData implements Serializable {
 
     @Id
-    @Column
-    private String id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
 
     @Column
     private String type;
@@ -24,28 +25,55 @@ public class OrderData implements Serializable {
     @Column
     private int quantity;
 
-    @OneToMany(mappedBy = "orderData")
-    private Set<OrderItemData> orderItems = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserData userData;
+    @OneToMany(mappedBy = "orderItemId.order",cascade ={ CascadeType.ALL })
+    private Set<OrderItemData> orderItems=new HashSet<>();
 
-    public OrderData() {
-    }
-
-    public OrderData(String id, String type, int quantity, UserData userData) {
-        this.id = id;
+    public OrderData(String type, int quantity, UserData userData) {
         this.type = type;
         this.quantity = quantity;
         this.userData = userData;
     }
 
-    public String getId() {
+    public Set<OrderItemData> getItems() {
+        return orderItems;
+    }
+
+    public void setItems(Set<OrderItemData> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserData userData;
+    @Column
+    private Status status;
+
+    public OrderData() {
+    }
+
+    public OrderData(Long id, String type, int quantity, Set<OrderItemData> orderItems) {
+        this.id = id;
+        this.type = type;
+        this.quantity = quantity;
+        this.orderItems = orderItems;
+        this.userData = userData;
+        this.status = Status.CREATED;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

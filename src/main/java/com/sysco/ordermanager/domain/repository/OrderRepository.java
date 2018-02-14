@@ -1,6 +1,7 @@
 package com.sysco.ordermanager.domain.repository;
 
 import com.sysco.ordermanager.domain.model.OrderData;
+import com.sysco.ordermanager.domain.model.Status;
 import com.sysco.ordermanager.web.api.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

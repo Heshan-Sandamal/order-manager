@@ -13,37 +13,27 @@ import java.io.Serializable;
 public class OrderItemData implements Serializable{
 
 
-    @Id
-    @ManyToOne
-    private OrderData orderData;
+    @EmbeddedId
+    private OrderItemId orderItemId;
 
-    @Id
-    @ManyToOne
-    private ItemData itemData;
 
     @Column
     private double amount;
 
-    public OrderItemData(OrderData order, ItemData item, double amount) {
-        this.orderData = order;
-        this.itemData = item;
+    public OrderItemData() {
+    }
+
+    public OrderItemData(OrderItemId orderItemId, double amount) {
+        this.orderItemId=orderItemId;
         this.amount = amount;
     }
 
-    public OrderData getOrder() {
-        return orderData;
+    public OrderItemId getOrderItemId() {
+        return orderItemId;
     }
 
-    public void setOrder(OrderData order) {
-        this.orderData = order;
-    }
-
-    public ItemData getItem() {
-        return itemData;
-    }
-
-    public void setItem(ItemData item) {
-        this.itemData = item;
+    public void setOrderItemId(OrderItemId orderItemId) {
+        this.orderItemId = orderItemId;
     }
 
     public double getAmount() {

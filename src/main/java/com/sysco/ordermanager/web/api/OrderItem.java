@@ -2,9 +2,7 @@ package com.sysco.ordermanager.web.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.io.Serializable;
-
-public class OrderItem{
+public class OrderItem {
 
     @JsonIgnore
     private Order order;

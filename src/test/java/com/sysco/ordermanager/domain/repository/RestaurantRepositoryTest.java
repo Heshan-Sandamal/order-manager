@@ -31,7 +31,6 @@ public class RestaurantRepositoryTest {
     public void createRestaurant() {
 
         UserData userData = new UserData(
-                "1",
                 "vibodha",
                 "123"
         );
@@ -48,7 +47,7 @@ public class RestaurantRepositoryTest {
         entityManager.persist(restaurantData);
         entityManager.flush();
 
-        UserData userFound = userRepository.getOne("1");
+        UserData userFound = userRepository.getOne((long)1);
         RestaurantData restaurantFound = restaurantRepository.getOne("1");
         assertThat(userFound).isEqualTo(restaurantData.getUserData());
 

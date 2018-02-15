@@ -12,9 +12,10 @@ import java.util.ArrayList;
 public interface OrderService {
 
     void setOrders(List<Order> orders);
-    Order cancelOrder(String id);
-    Order getOrder(String id);
+    public Order cancelOrder(Long id);
+    Order getOrder(Long id);
+    List<Order> getOrders();
     Order setOrder(Order order);
-    ArrayList<Order> getUserOrders(String id);
+    List<Order> getUserOrders(Long id);
 
 }

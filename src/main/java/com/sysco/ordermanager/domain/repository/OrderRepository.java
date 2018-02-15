@@ -11,7 +11,8 @@ import java.util.List;
  * Created by vibodhab on 2/8/18.
  */
 @Repository
-public interface OrderRepository extends JpaRepository<OrderData, String> {
-    public ArrayList<OrderData> findByUserData(String id);
+public interface OrderRepository extends JpaRepository<OrderData, Long> {
+    public List<OrderData> findByUserDataId(Long id);
     public List<OrderData> findByType(String type);
+
 }

@@ -1,9 +1,7 @@
 package com.sysco.ordermanager.service;
 
-import com.sysco.ordermanager.aspect.Exception.UserNotFoundException;
 import com.sysco.ordermanager.aspect.anotation.ValidateGetRequestId;
 import com.sysco.ordermanager.domain.model.RestaurantData;
-import com.sysco.ordermanager.domain.model.UserData;
 import com.sysco.ordermanager.domain.repository.RestaurantRepository;
 import com.sysco.ordermanager.domain.repository.UserRepository;
 import com.sysco.ordermanager.service.converter.RestaurantConverter;

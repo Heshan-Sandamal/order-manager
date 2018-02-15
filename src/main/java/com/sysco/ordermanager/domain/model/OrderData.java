@@ -1,12 +1,13 @@
 package com.sysco.ordermanager.domain.model;
 
 
+import com.sysco.ordermanager.util.enums.OrderStatus;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
 
 
 /**
@@ -17,23 +18,32 @@ import java.util.Set;
 public class OrderData implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
     private String type;
 
-    @Column
-    private int quantity;
+    @OneToMany(mappedBy = "orderItemId.order", cascade = {CascadeType.ALL})
+    private Set<OrderItemData> orderItems = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserData userData;
 
-    @OneToMany(mappedBy = "orderItemId.order",cascade ={ CascadeType.ALL })
-    private Set<OrderItemData> orderItems=new HashSet<>();
+    private OrderStatus orderStatus;
 
-    public OrderData(String type, int quantity, UserData userData) {
+    public OrderData(String type, UserData userData) {
         this.type = type;
-        this.quantity = quantity;
         this.userData = userData;
+    }
+
+    public OrderData() {
+    }
+
+    public OrderData(String type, UserData userData, OrderStatus orderStatus) {
+        this.type = type;
+        this.userData = userData;
+        this.orderStatus = orderStatus;
     }
 
     public Set<OrderItemData> getItems() {
@@ -42,31 +52,16 @@ public class OrderData implements Serializable {
 
     public void setItems(Set<OrderItemData> orderItems) {
         this.orderItems = orderItems;
+        this.orderStatus = OrderStatus.CREATED;
+
     }
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserData userData;
-    @Column
-    private Status status;
-
-    public OrderData() {
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
     }
 
-    public OrderData(Long id, String type, int quantity, Set<OrderItemData> orderItems) {
-        this.id = id;
-        this.type = type;
-        this.quantity = quantity;
-        this.orderItems = orderItems;
-        this.status = Status.CREATED;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public Long getId() {
@@ -83,14 +78,6 @@ public class OrderData implements Serializable {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public Set<OrderItemData> getOrderItems() {

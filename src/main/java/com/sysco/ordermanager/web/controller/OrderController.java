@@ -22,7 +22,7 @@ public class OrderController {
 
 
     @GetMapping("/{order_id}")
-    public ResponseEntity<Order> getOrder(@PathVariable String order_id){
+    public ResponseEntity<Order> getOrder(@PathVariable Long order_id){
         Order order = orderService.getOrder(order_id);
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
@@ -39,14 +39,20 @@ public class OrderController {
         return new ResponseEntity<>(orders, HttpStatus.CREATED);
     }
 
+    @GetMapping("/")
+    public ResponseEntity<List<Order>>   getOrders(){
+        List<Order> orders = orderService.getOrders();
+        return new ResponseEntity<>(orders, HttpStatus.OK);
+    }
+
     @GetMapping("/user/{user_id}")
-    public ResponseEntity<List<Order>>  getUserOrders(@PathVariable String user_id){
-        ArrayList<Order> orders = orderService.getUserOrders(user_id);
+    public ResponseEntity<List<Order>>  getUserOrders(@PathVariable Long user_id){
+        List<Order> orders = orderService.getUserOrders(user_id);
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
     @GetMapping("/cancel/{order_id}")
-    public ResponseEntity<Order> cancelOrder(@PathVariable String order_id){
+    public ResponseEntity<Order> cancelOrder(@PathVariable Long order_id){
         Order order = orderService.cancelOrder(order_id);
         return new ResponseEntity<>(order, HttpStatus.OK);
     }

@@ -2,7 +2,6 @@ package com.sysco.ordermanager.service.converter;
 
 import com.sysco.ordermanager.domain.model.ItemData;
 import com.sysco.ordermanager.web.api.Item;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-
-import javax.validation.constraints.AssertTrue;
 
 import static org.junit.Assert.*;
 

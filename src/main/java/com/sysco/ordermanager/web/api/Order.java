@@ -8,39 +8,33 @@ import java.util.Set;
 public class Order {
     private Long id;
     private String type;
-    private int quantity;
     private User user;
     private Set<OrderItem> orderItems;
 
-    public Order(Long id, String type, int quantity, User user) {
+    public Order(Long id, String type, User user) {
         this.id = id;
         this.type = type;
-        this.quantity = quantity;
         this.user = user;
     }
 
 
-    public Order(Long id, String type, int quantity) {
+    public Order(Long id, String type) {
         this.id = id;
         this.type = type;
-        this.quantity = quantity;
     }
 
-    public Order(Long id, String type, int quantity, Set<OrderItem> orderItems) {
+    public Order(Long id, String type, Set<OrderItem> orderItems) {
         this.id = id;
         this.type = type;
-        this.quantity = quantity;
         this.orderItems = orderItems;
     }
 
-    public Order(String type, int quantity) {
+    public Order(String type) {
         this.type = type;
-        this.quantity = quantity;
     }
 
-    public Order(String type, int quantity, User user) {
+    public Order(String type, User user) {
         this.type = type;
-        this.quantity = quantity;
         this.user = user;
     }
 
@@ -66,14 +60,6 @@ public class Order {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public Set<OrderItem> getOrderItems() {

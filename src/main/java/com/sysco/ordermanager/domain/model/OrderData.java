@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-
 /**
  * Created by vibodhab on 2/8/18.
  */
@@ -16,23 +15,36 @@ import java.util.Set;
 public class OrderData implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
     private String type;
 
+    @OneToMany(mappedBy = "orderItemId.order", cascade = {CascadeType.ALL})
+    private Set<OrderItemData> orderItems = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserData userData;
+
     @Column
-    private int quantity;
+    private Status status;
 
-
-    @OneToMany(mappedBy = "orderItemId.order",cascade ={ CascadeType.ALL })
-    private Set<OrderItemData> orderItems=new HashSet<>();
-
-    public OrderData(String type, int quantity, UserData userData) {
+    public OrderData(String type, UserData userData) {
         this.type = type;
-        this.quantity = quantity;
         this.userData = userData;
+    }
+
+    public OrderData() {
+    }
+
+    public OrderData(Long id, String type, Set<OrderItemData> orderItems) {
+        this.id = id;
+        this.type = type;
+        this.orderItems = orderItems;
+        this.userData = userData;
+        this.status = Status.CREATED;
     }
 
     public Set<OrderItemData> getItems() {
@@ -41,24 +53,6 @@ public class OrderData implements Serializable {
 
     public void setItems(Set<OrderItemData> orderItems) {
         this.orderItems = orderItems;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserData userData;
-    @Column
-    private Status status;
-
-    public OrderData() {
-    }
-
-    public OrderData(Long id, String type, int quantity, Set<OrderItemData> orderItems) {
-        this.id = id;
-        this.type = type;
-        this.quantity = quantity;
-        this.orderItems = orderItems;
-        this.userData = userData;
-        this.status = Status.CREATED;
     }
 
     public Status getStatus() {
@@ -83,14 +77,6 @@ public class OrderData implements Serializable {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public Set<OrderItemData> getOrderItems() {

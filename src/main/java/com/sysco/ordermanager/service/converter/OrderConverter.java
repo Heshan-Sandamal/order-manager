@@ -26,7 +26,6 @@ public class OrderConverter {
         final Order order = new Order(
                 orderData.getId(),
                 orderData.getType(),
-                orderData.getQuantity(),
                 userConverter.convertUserDataToUser(orderData.getUserData())
         );
         final Set<OrderItem> orderItemSet = orderItemConverter.convertOrderItemDataListToOrderItemList(orderData.getItems(), order);
@@ -38,7 +37,6 @@ public class OrderConverter {
 
         final OrderData orderData = new OrderData(
                 order.getType(),
-                order.getQuantity(),
                 userConverter.convertUserToUserData(order.getUser())
         );
 

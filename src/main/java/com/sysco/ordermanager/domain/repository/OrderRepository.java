@@ -16,4 +16,6 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<OrderData, String> {
     public ArrayList<OrderData> findByUserData(String id);
     public List<OrderData> findByType(String type);
+
+    OrderData findById(Long id);
 }

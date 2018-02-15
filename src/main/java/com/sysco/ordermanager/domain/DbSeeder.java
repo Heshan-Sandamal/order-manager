@@ -1,6 +1,5 @@
 package com.sysco.ordermanager.domain;
 
-import com.sysco.ordermanager.domain.model.UserData;
 import com.sysco.ordermanager.domain.repository.OrderRepository;
 import com.sysco.ordermanager.domain.repository.UserRepository;
 import com.sysco.ordermanager.service.ItemService;
@@ -59,7 +58,7 @@ public class DbSeeder implements CommandLineRunner {
         item = itemService.addItem(item);
 
 
-        Order order = new Order("23",  2,user);
+        Order order = new Order("23", user);
 
         OrderItem oid = new OrderItem(order, item, 22.3);
 

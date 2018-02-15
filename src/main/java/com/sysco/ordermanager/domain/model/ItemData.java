@@ -35,6 +35,9 @@ public class ItemData implements Serializable{
         this.stock = stock;
     }
 
+    public ItemData() {
+    }
+
     public void setId(int id) {
         this.id = id;
     }

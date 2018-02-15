@@ -6,4 +6,5 @@ public interface RestaurantService {
 
     public Restaurant getRestaurant(String id);
     public Restaurant addRestaurant(Restaurant restaurant);
+    public Restaurant updateRestaurant(Restaurant restaurant);
 }

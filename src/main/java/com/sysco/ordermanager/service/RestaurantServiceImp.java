@@ -1,6 +1,7 @@
 package com.sysco.ordermanager.service;
 
 import com.sysco.ordermanager.aspect.Exception.UserNotFoundException;
+import com.sysco.ordermanager.aspect.anotation.CheckRestaurantExist;
 import com.sysco.ordermanager.aspect.anotation.ValidateGetRequestId;
 import com.sysco.ordermanager.aspect.anotation.ValidateUserNotFound;
 import com.sysco.ordermanager.domain.model.RestaurantData;
@@ -11,6 +12,8 @@ import com.sysco.ordermanager.service.converter.RestaurantConverter;
 import com.sysco.ordermanager.web.api.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 public class RestaurantServiceImp implements RestaurantService{
@@ -32,8 +35,19 @@ public class RestaurantServiceImp implements RestaurantService{
 
     @Override
     @ValidateUserNotFound
+    @Transactional
     public Restaurant addRestaurant(Restaurant restaurant) {
         RestaurantData restaurantData = restaurantConverter.convertRestaurantToRestaurantData(restaurant);
+        return restaurantConverter.convertRestaurantDataToRestaurant(restaurantRepository.save(restaurantData));
+    }
+
+    @Override
+    @CheckRestaurantExist
+    @Transactional
+    public Restaurant updateRestaurant(Restaurant restaurant){
+        RestaurantData oldRestaurantData = restaurantRepository.getOne(restaurant.getId());
+        RestaurantData restaurantData = restaurantConverter.convertRestaurantToRestaurantData(restaurant);
+        restaurantData.setId(oldRestaurantData.getId());
         return restaurantConverter.convertRestaurantDataToRestaurant(restaurantRepository.save(restaurantData));
     }
 }

@@ -2,7 +2,9 @@ package com.sysco.ordermanager.web.controller;
 
 import com.sysco.ordermanager.domain.model.UserData;
 import com.sysco.ordermanager.domain.repository.UserRepository;
+import com.sysco.ordermanager.security.JWTAuthenticationFilter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,14 +25,9 @@ public class UserController {
         userRepository.save(user);
     }
 
-// TODO: 2/13/18
-//    @PostMapping("/signUp")
-//    public ResponseEntity<loginResponse> signUp(@RequestBody User user){
-//        return new ResponseEntity<>(userService.signUp(user), HttpStatus.CREATED);
-//    }
-//
-//    @PostMapping("/signIn")
-//    public ResponseEntity<loginResponse>signIn(@RequestBody LoginRequest loginRequest){
-//        return new ResponseEntity<>(userService.signIn(loginRequest),HttpStatus.FOUND);
-//    }
+    @PostMapping("/login")
+    public void signIn(@RequestBody UserData user) {
+    //        this is hack in order to generate Swagger documentation
+    }
+
 }

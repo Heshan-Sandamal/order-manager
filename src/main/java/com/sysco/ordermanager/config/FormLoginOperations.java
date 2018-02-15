@@ -38,7 +38,8 @@ public class FormLoginOperations extends ApiListingScanner {
         operations.add(new OperationBuilder( new CachingOperationNameGenerator())
                 .method(HttpMethod.POST)
                 .uniqueId("login")
-                .parameters(Arrays.asList(new ParameterBuilder()
+                .parameters(Arrays.asList(
+                        new ParameterBuilder()
                         .name("name")
                         .description("User Name")
                         .parameterType("query")
@@ -46,16 +47,17 @@ public class FormLoginOperations extends ApiListingScanner {
                         .modelRef(new ModelRef("string"))
                         .build(),
                         new ParameterBuilder()
-                                .name("password")
-                                .description("The password")
-                                .parameterType("query")
-                                .type(typeResolver.resolve(String.class))
-                                .modelRef(new ModelRef("string"))
-                                .build()))
+                        .name("password")
+                        .description("The password")
+                        .parameterType("query")
+                        .type(typeResolver.resolve(String.class))
+                        .modelRef(new ModelRef("string"))
+                        .build())
+                )
                 .summary("Log in") //
                 .notes("Here you can log in")
                 .build());
-        apis.add(new ApiDescription("/api/login/", "Authentication documentation", operations, false));
+        apis.add(new ApiDescription("/users/login/", "Authentication documentation", operations, false));
 
         def.put("authentication", new ApiListingBuilder(context.getDocumentationContext().getApiDescriptionOrdering())
                 .apis(apis)

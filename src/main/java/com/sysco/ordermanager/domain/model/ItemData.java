@@ -7,12 +7,13 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "item")
 public class ItemData implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
+
 
     public ItemData() {
 
@@ -35,6 +36,7 @@ public class ItemData implements Serializable{
         this.stock = stock;
     }
 
+
     @Column
     private String name;
 
@@ -49,6 +51,7 @@ public class ItemData implements Serializable{
 
     @OneToMany(mappedBy = "orderItemId.item")
     private Set<OrderItemData> itemOrders=new HashSet<>();
+
 
 
     public int getId() {

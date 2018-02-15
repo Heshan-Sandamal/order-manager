@@ -6,11 +6,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table
+@Table(name = "order_item")
 public class OrderItemData implements Serializable{
+
 
     @EmbeddedId
     private OrderItemId orderItemId;
+
 
     @Column
     private double amount;

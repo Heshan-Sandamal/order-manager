@@ -7,16 +7,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 
+
 /**
  * Created by vibodhab on 2/8/18.
  */
 @Entity
-@Table
+@Table(name = "order_t")
 public class OrderData implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-
     private Long id;
 
     @Column
@@ -24,6 +24,7 @@ public class OrderData implements Serializable {
 
     @Column
     private int quantity;
+
 
     @OneToMany(mappedBy = "orderItemId.order",cascade ={ CascadeType.ALL })
     private Set<OrderItemData> orderItems=new HashSet<>();
@@ -45,6 +46,8 @@ public class OrderData implements Serializable {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserData userData;
+    @Column
+    private Status status;
 
     public OrderData() {
     }
@@ -54,6 +57,16 @@ public class OrderData implements Serializable {
         this.type = type;
         this.quantity = quantity;
         this.orderItems = orderItems;
+        this.userData = userData;
+        this.status = Status.CREATED;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Long getId() {

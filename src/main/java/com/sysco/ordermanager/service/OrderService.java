@@ -2,6 +2,7 @@ package com.sysco.ordermanager.service;
 
 import com.sysco.ordermanager.web.api.Order;
 
+import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 
 public interface OrderService {
 
+    void setOrders(List<Order> orders);
+    public Order cancelOrder(String id);
     Order getOrder(String id);
     Order setOrder(Order order);
     ArrayList<Order> getUserOrders(String id);

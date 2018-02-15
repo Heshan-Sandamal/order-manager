@@ -1,11 +1,12 @@
 package com.sysco.ordermanager.web.api;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by vibodhab on 2/8/18.
  */
-public class Order {
+public class Order{
     private Long id;
     private String type;
     private int quantity;
@@ -19,6 +20,8 @@ public class Order {
         this.user = user;
     }
 
+    public Order() {
+    }
 
     public Order(Long id, String type, int quantity) {
         this.id = id;

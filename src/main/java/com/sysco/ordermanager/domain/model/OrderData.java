@@ -1,6 +1,8 @@
 package com.sysco.ordermanager.domain.model;
 
 
+import com.sysco.ordermanager.util.enums.OrderStatus;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -18,7 +20,6 @@ public class OrderData implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
     private String type;
 
     @OneToMany(mappedBy = "orderItemId.order", cascade = {CascadeType.ALL})
@@ -28,8 +29,7 @@ public class OrderData implements Serializable {
     @JoinColumn(name = "user_id", nullable = false)
     private UserData userData;
 
-    @Column
-    private Status status;
+    private OrderStatus orderStatus;
 
     public OrderData(String type, UserData userData) {
         this.type = type;
@@ -39,12 +39,10 @@ public class OrderData implements Serializable {
     public OrderData() {
     }
 
-    public OrderData(Long id, String type, Set<OrderItemData> orderItems) {
-        this.id = id;
+    public OrderData(String type, UserData userData, OrderStatus orderStatus) {
         this.type = type;
-        this.orderItems = orderItems;
         this.userData = userData;
-        this.status = Status.CREATED;
+        this.orderStatus = orderStatus;
     }
 
     public Set<OrderItemData> getItems() {
@@ -55,12 +53,12 @@ public class OrderData implements Serializable {
         this.orderItems = orderItems;
     }
 
-    public Status getStatus() {
-        return status;
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public Long getId() {

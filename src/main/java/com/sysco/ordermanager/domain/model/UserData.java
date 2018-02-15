@@ -1,7 +1,6 @@
 package com.sysco.ordermanager.domain.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Set;
 
 @Entity
@@ -9,13 +8,11 @@ import java.util.Set;
 public class UserData {
 
     @Id
-    @Column
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @Column
     private String name;
 
-    @Column
     private String password;
 
     @OneToMany(mappedBy="userData")
@@ -24,17 +21,22 @@ public class UserData {
     public UserData() {
     }
 
-    public UserData(String id, String name, String password) {
+    public UserData(Long id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
     }
 
-    public String getId() {
+    public UserData(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

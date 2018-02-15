@@ -1,8 +1,12 @@
 package com.sysco.ordermanager.web.api;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class OrderItem {
 
+    @JsonIgnore
     private Order order;
+
     private Item item;
     private double amount;
 
@@ -11,6 +15,9 @@ public class OrderItem {
         this.order = order;
         this.item = item;
         this.amount = amount;
+    }
+
+    public OrderItem() {
     }
 
     public Order getOrder() {

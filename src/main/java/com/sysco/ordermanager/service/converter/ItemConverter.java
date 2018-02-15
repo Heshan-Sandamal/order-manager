@@ -14,7 +14,7 @@ public class ItemConverter {
 
 
     public ItemData convertItemToItemDataWithId(Item item){
-        ItemData itemData = new ItemData(item.getName(), item.getCategory(), item.getVendor(), item.getStock());
+        ItemData itemData = new ItemData();
         itemData.setId(item.getId());
         return itemData;
     }

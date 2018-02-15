@@ -1,5 +1,7 @@
 package com.sysco.ordermanager.web.api;
 
+import com.sysco.ordermanager.util.enums.OrderStatus;
+
 import java.util.Set;
 
 /**
@@ -10,32 +12,30 @@ public class Order {
     private String type;
     private User user;
     private Set<OrderItem> orderItems;
+    private OrderStatus orderStatus;
 
-    public Order(Long id, String type, User user) {
+    public Order() {
+    }
+
+    public Order(Long id, String type, User user, OrderStatus orderStatus) {
         this.id = id;
         this.type = type;
         this.user = user;
+        this.orderStatus = orderStatus;
     }
 
-
-    public Order(Long id, String type) {
-        this.id = id;
-        this.type = type;
-    }
-
-    public Order(Long id, String type, Set<OrderItem> orderItems) {
-        this.id = id;
-        this.type = type;
-        this.orderItems = orderItems;
-    }
-
-    public Order(String type) {
-        this.type = type;
-    }
-
-    public Order(String type, User user) {
+    public Order(String type, User user, OrderStatus orderStatus) {
         this.type = type;
         this.user = user;
+        this.orderStatus = orderStatus;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public User getUser() {

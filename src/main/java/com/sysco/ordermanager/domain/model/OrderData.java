@@ -54,7 +54,6 @@ public class OrderData implements Serializable {
         this.type = type;
         this.quantity = quantity;
         this.orderItems = orderItems;
-        this.userData = userData;
     }
 
     public Long getId() {

@@ -1,6 +1,5 @@
 package com.sysco.ordermanager.web.controller;
 
-import com.sysco.ordermanager.domain.model.OrderData;
 import com.sysco.ordermanager.service.OrderService;
 import com.sysco.ordermanager.web.api.Order;
 import org.springframework.beans.factory.annotation.Autowired;

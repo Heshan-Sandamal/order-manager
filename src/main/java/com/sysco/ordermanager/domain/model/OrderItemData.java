@@ -2,9 +2,6 @@ package com.sysco.ordermanager.domain.model;
 
 
 
-import com.sysco.ordermanager.web.api.Item;
-import com.sysco.ordermanager.web.api.Order;
-
 import javax.persistence.*;
 import java.io.Serializable;
 

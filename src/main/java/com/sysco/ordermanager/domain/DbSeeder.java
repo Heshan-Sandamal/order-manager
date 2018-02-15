@@ -1,6 +1,5 @@
 package com.sysco.ordermanager.domain;
 
-import com.sysco.ordermanager.domain.model.UserData;
 import com.sysco.ordermanager.domain.repository.OrderRepository;
 import com.sysco.ordermanager.domain.repository.UserRepository;
 import com.sysco.ordermanager.service.ItemService;

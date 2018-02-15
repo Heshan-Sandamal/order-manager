@@ -35,8 +35,8 @@ public class OrderServiceImp implements OrderService {
     public ArrayList<Order> getUserOrders(String id) {
         ArrayList<OrderData> userOrderData = orderRepository.findByUserData(id);
         ArrayList<Order> userOrders = new ArrayList<>();
-        for (int i = 0; i < userOrderData.size(); i++){
-            Order tempOrder = orderConverter.convertOrderDataToOrder(userOrderData.get(i));
+        for (OrderData anUserOrderData : userOrderData) {
+            Order tempOrder = orderConverter.convertOrderDataToOrder(anUserOrderData);
             userOrders.add(tempOrder);
         }
         return userOrders;

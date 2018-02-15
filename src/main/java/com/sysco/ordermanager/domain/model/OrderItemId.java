@@ -1,7 +1,6 @@
 package com.sysco.ordermanager.domain.model;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.Objects;

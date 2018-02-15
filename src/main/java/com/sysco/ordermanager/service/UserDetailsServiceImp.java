@@ -22,7 +22,7 @@ public class UserDetailsServiceImp implements UserDetailsService{
         if(userData == null){
             throw new UsernameNotFoundException(name);
         }
-        return new User(userData.getName(),userData.getPassword(),emptyList());
+        return new User(userData.getId().toString(),userData.getPassword(),emptyList());
     }
 }
 

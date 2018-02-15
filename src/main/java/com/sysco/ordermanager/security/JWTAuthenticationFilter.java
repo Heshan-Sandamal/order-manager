@@ -3,6 +3,7 @@ package com.sysco.ordermanager.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sysco.ordermanager.domain.model.UserData;
+import com.sysco.ordermanager.domain.repository.UserRepository;
 import com.sysco.ordermanager.web.api.UserDTO;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -30,9 +31,11 @@ import static com.sysco.ordermanager.security.SecurityConstants.TOKEN_PREFIX;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
+    private UserRepository userRepository;
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
+        setFilterProcessesUrl("/users/login");
     }
 
     @Override
@@ -55,9 +58,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-//        super.successfulAuthentication(request, response, chain, authResult);
         String token = Jwts.builder()
-                .setSubject(((User)authResult.getPrincipal()).getUsername())
+                .setSubject(((User)authResult.getPrincipal()).getUsername()) // User name = user id here.
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512,SECRET.getBytes())
                 .compact();

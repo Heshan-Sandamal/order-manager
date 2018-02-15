@@ -13,6 +13,14 @@ public class Order{
     private User user;
     private Set<OrderItem> orderItems;
 
+    public Order(Long id, String type, int quantity, User user, Set<OrderItem> orderItems) {
+        this.id = id;
+        this.type = type;
+        this.quantity = quantity;
+        this.user = user;
+        this.orderItems = orderItems;
+    }
+
     public Order(Long id, String type, int quantity, User user) {
         this.id = id;
         this.type = type;
@@ -21,19 +29,6 @@ public class Order{
     }
 
     public Order() {
-    }
-
-    public Order(Long id, String type, int quantity) {
-        this.id = id;
-        this.type = type;
-        this.quantity = quantity;
-    }
-
-    public Order(Long id, String type, int quantity, Set<OrderItem> orderItems) {
-        this.id = id;
-        this.type = type;
-        this.quantity = quantity;
-        this.orderItems = orderItems;
     }
 
     public Order(String type, int quantity) {

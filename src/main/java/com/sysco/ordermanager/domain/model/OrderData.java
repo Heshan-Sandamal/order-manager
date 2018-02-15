@@ -4,6 +4,7 @@ package com.sysco.ordermanager.domain.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -57,7 +58,6 @@ public class OrderData implements Serializable {
         this.type = type;
         this.quantity = quantity;
         this.orderItems = orderItems;
-        this.userData = userData;
         this.status = Status.CREATED;
     }
 
@@ -107,5 +107,19 @@ public class OrderData implements Serializable {
 
     public void setUserData(UserData userData) {
         this.userData = userData;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderData orderData = (OrderData) o;
+        return Objects.equals(getId(), orderData.getId());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getId());
     }
 }

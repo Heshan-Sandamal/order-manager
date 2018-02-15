@@ -4,6 +4,7 @@ package com.sysco.ordermanager.domain.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "order_item")
@@ -39,5 +40,20 @@ public class OrderItemData implements Serializable{
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderItemData that = (OrderItemData) o;
+        return Double.compare(that.getAmount(), getAmount()) == 0 &&
+                Objects.equals(getOrderItemId(), that.getOrderItemId());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getOrderItemId(), getAmount());
     }
 }

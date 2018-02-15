@@ -28,7 +28,6 @@ public class RestaurantControllerTest {
     @Test
     public void getUser() throws Exception{
         User user = new User(
-                "1",
                 "vibodha",
                 "123"
         );

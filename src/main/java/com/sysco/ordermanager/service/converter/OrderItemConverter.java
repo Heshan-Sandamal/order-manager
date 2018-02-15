@@ -10,11 +10,8 @@ import com.sysco.ordermanager.web.api.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class OrderItemConverter {
@@ -42,7 +39,6 @@ public class OrderItemConverter {
     public OrderItemData convertOrderItemToOrderItemData(OrderItem orderItem,OrderData orderData){
         final ItemData itemData = itemConverter.convertItemToItemDataWithId(orderItem.getItem());
         return new OrderItemData(new OrderItemId(orderData,itemData),orderItem.getAmount());
-
     }
 
 

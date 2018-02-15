@@ -1,5 +1,7 @@
 package com.sysco.ordermanager.web.api;
 
+import com.sysco.ordermanager.util.enums.OrderStatus;
+
 import java.util.Set;
 
 /**
@@ -8,40 +10,32 @@ import java.util.Set;
 public class Order {
     private Long id;
     private String type;
-    private int quantity;
     private User user;
     private Set<OrderItem> orderItems;
+    private OrderStatus orderStatus;
 
-    public Order(Long id, String type, int quantity, User user) {
+    public Order() {
+    }
+
+    public Order(Long id, String type, User user, OrderStatus orderStatus) {
         this.id = id;
         this.type = type;
-        this.quantity = quantity;
         this.user = user;
+        this.orderStatus = orderStatus;
     }
 
-
-    public Order(Long id, String type, int quantity) {
-        this.id = id;
+    public Order(String type, User user, OrderStatus orderStatus) {
         this.type = type;
-        this.quantity = quantity;
-    }
-
-    public Order(Long id, String type, int quantity, Set<OrderItem> orderItems) {
-        this.id = id;
-        this.type = type;
-        this.quantity = quantity;
-        this.orderItems = orderItems;
-    }
-
-    public Order(String type, int quantity) {
-        this.type = type;
-        this.quantity = quantity;
-    }
-
-    public Order(String type, int quantity, User user) {
-        this.type = type;
-        this.quantity = quantity;
         this.user = user;
+        this.orderStatus = orderStatus;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public User getUser() {
@@ -66,14 +60,6 @@ public class Order {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public Set<OrderItem> getOrderItems() {

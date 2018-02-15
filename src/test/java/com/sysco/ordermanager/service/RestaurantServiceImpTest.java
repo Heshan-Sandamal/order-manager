@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.assertj.core.api.Assertions.*;
 
@@ -58,7 +57,6 @@ public class RestaurantServiceImpTest {
     @Before
     public void setup(){
         UserData userData = new UserData(
-                "1",
                 "vibodha",
                 "123"
         );
@@ -70,7 +68,7 @@ public class RestaurantServiceImpTest {
         Mockito.when(restaurantRepository.getOne("1"))
                 .thenReturn(restaurantData);
 
-        Mockito.when(userRepository.getOne("1"))
+        Mockito.when(userRepository.getOne((long)1))
                 .thenReturn(userData);
 
     }

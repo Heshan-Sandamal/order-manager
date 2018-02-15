@@ -1,17 +1,15 @@
 package com.sysco.ordermanager.web.api;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Objects;
 
 public class Item {
-    private int id;
+    private Integer id;
     private String name;
     private String category;
     private String vendor;
-    private int stock;
+    private Integer stock;
 
-    public Item(int id, String name, String category, String vendor, int stock) {
+    public Item(Integer id, String name, String category, String vendor, Integer stock) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -19,18 +17,21 @@ public class Item {
         this.stock = stock;
     }
 
-    public Item(String name, String category, String vendor, int stock) {
+    public Item(String name, String category, String vendor, Integer stock) {
         this.name = name;
         this.category = category;
         this.vendor = vendor;
         this.stock = stock;
     }
 
-    public int getId() {
+    public Item() {
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -58,11 +59,29 @@ public class Item {
         this.vendor = vendor;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return getId() == item.getId() &&
+                getStock() == item.getStock() &&
+                Objects.equals(getName(), item.getName()) &&
+                Objects.equals(getCategory(), item.getCategory()) &&
+                Objects.equals(getVendor(), item.getVendor());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getId(), getName(), getCategory(), getVendor(), getStock());
     }
 }

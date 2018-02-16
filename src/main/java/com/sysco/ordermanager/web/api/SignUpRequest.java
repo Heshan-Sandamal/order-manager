@@ -1,5 +1,6 @@
 package com.sysco.ordermanager.web.api;
 
+
 public class SignUpRequest {
     private String name;
     private String password;

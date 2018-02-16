@@ -1,27 +1,65 @@
 package com.sysco.ordermanager.web.api;
 
+import com.sysco.ordermanager.util.enums.OrderStatus;
+
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by vibodhab on 2/8/18.
  */
 public class Order {
-    private String id;
+    private Long id;
     private String type;
-    private int quantity;
+    private User user;
+    private OrderStatus orderStatus;
+    private Set<OrderItem> orderItems;
 
-    public Order(){}
-
-    public Order(String id, String type, int quantity) {
-
-        this.id = id;
-        this.type = type;
-        this.quantity = quantity;
+    public Order() {
     }
 
-    public String getId() {
+    public Order(Long id, String type, User user, OrderStatus orderStatus) {
+        this.id = id;
+        this.type = type;
+        this.user = user;
+        this.orderStatus = orderStatus;
+    }
+
+    public Order(String type, User user, OrderStatus orderStatus) {
+        this.type = type;
+        this.user = user;
+        this.orderStatus = orderStatus;
+    }
+
+    public Order(Long id, String type, User user, OrderStatus orderStatus, Set<OrderItem> orderItems) {
+        this.id = id;
+        this.type = type;
+        this.user = user;
+        this.orderStatus = orderStatus;
+        this.orderItems = orderItems;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -33,11 +71,11 @@ public class Order {
         this.type = type;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public Set<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setOrderItems(Set<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 }

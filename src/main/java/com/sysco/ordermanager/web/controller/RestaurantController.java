@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(path = "/restaurant")
 public class RestaurantController {
@@ -15,15 +17,16 @@ public class RestaurantController {
     private RestaurantService restaurantService;
 
     @GetMapping(path = "/{id}")
-    public Restaurant getUser(@PathVariable String id){
+    public Restaurant getRestaurant(@PathVariable String id){
         return restaurantService.getRestaurant(id);
     }
 
     @PostMapping(path = "/", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurant){
+    public ResponseEntity<Restaurant> addRestaurant(@Valid @RequestBody Restaurant restaurant){
         return new ResponseEntity<Restaurant>(
                 restaurantService.addRestaurant(restaurant),
                 HttpStatus.CREATED
         );
     }
+
 }

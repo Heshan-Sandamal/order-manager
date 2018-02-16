@@ -6,5 +6,7 @@ import com.sysco.ordermanager.web.api.UserDTO;
 
 public interface UserService {
     UserDTO getUser(long id);
+
     UserDTO signUp(SignUpRequest signUpRequest);
+
 }

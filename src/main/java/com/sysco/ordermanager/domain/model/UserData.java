@@ -5,22 +5,32 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "user")
 public class UserData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
     private String password;
+
+    @OneToMany(mappedBy="userData")
+    private Set<OrderData> orders;
 
     public UserData() {
     }
 
     public UserData(Long id, String name, String password) {
         this.id = id;
+        this.name = name;
+        this.password = password;
+    }
+
+    public UserData(String name, String password) {
         this.name = name;
         this.password = password;
     }

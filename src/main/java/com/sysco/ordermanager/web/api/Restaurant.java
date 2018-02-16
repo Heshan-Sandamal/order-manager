@@ -1,11 +1,18 @@
 package com.sysco.ordermanager.web.api;
 
-import com.sysco.ordermanager.domain.model.UserData;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class Restaurant {
 
     private String id;
+
+    @NotNull
+    @Size(min=2, message="Name should have atleast 2 characters")
     private String address;
+
+    @NotNull
     private User user;
 
     public Restaurant() {

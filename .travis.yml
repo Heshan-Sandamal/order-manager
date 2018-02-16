@@ -4,6 +4,6 @@ jdk:
 services:
   - mysql
 before_install:
-  - mysql -u root --password="1234" < test/travis.sql
+  - mysql -u root --password="1234" < travis.sql
 script:
  - mvn clean install -dSkipTest

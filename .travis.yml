@@ -1,5 +1,9 @@
 language: java
 jdk:
  - oraclejdk8
+services:
+  - mysql
+before_install:
+  - mysql -u root --password="" < src/test/java/com/sysco/ordermanager/travis.sql
 script:
- - mvn clean install -dSkipTest
+  - mvn install -DskipTests

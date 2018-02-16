@@ -39,6 +39,13 @@ public class OrderData implements Serializable {
     public OrderData() {
     }
 
+    public OrderData(Long id, String type, UserData userData, OrderStatus orderStatus) {
+        this.id = id;
+        this.type = type;
+        this.userData = userData;
+        this.orderStatus = orderStatus;
+    }
+
     public OrderData(String type, UserData userData, OrderStatus orderStatus) {
         this.type = type;
         this.userData = userData;

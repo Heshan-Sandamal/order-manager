@@ -69,7 +69,7 @@ public class OrderServiceImp implements OrderService {
 
     @Override
     public Order cancelOrder(Long id) {
-        OrderData orderData = orderRepository.findOne(id);
+        OrderData orderData = orderRepository.getOne(id);
         if(orderData.getOrderStatus() != OrderStatus.DISPATCHED){
             orderData.setOrderStatus(OrderStatus.CANCELLED);
         }

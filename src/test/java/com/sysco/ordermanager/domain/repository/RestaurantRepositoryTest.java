@@ -50,6 +50,7 @@ public class RestaurantRepositoryTest {
         UserData userFound = userRepository.getOne((long)1);
         RestaurantData restaurantFound = restaurantRepository.getOne("1");
         assertThat(userFound).isEqualTo(restaurantData.getUserData());
+        assertThat(restaurantFound).isEqualTo(restaurantData);
 
     }
 }

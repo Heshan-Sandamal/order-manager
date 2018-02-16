@@ -1,6 +1,4 @@
 package com.sysco.ordermanager.web.api;
-
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -11,17 +9,17 @@ public class Restaurant {
     @NotNull
     @Size(min=2, message="Name should have atleast 2 characters")
     private String address;
-
     @NotNull
-    private User user;
+    private UserDTO userDTO;
+
 
     public Restaurant() {
     }
 
-    public Restaurant(String id, String address, User user) {
+    public Restaurant(String id, String address, UserDTO userDTO) {
         this.id = id;
         this.address = address;
-        this.user = user;
+        this.userDTO = userDTO;
     }
 
     public String getId() {
@@ -40,11 +38,11 @@ public class Restaurant {
         this.address = address;
     }
 
-    public User getUser() {
-        return user;
+    public UserDTO getUserDTO() {
+        return userDTO;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 }

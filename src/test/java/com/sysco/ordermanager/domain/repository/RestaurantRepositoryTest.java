@@ -38,6 +38,8 @@ public class RestaurantRepositoryTest {
         entityManager.persist(userData);
         entityManager.flush();
 
+        long id = (long) entityManager.getId(userData);
+
         RestaurantData restaurantData = new RestaurantData(
                 "1",
                 "102/16/1, meegoda",
@@ -47,9 +49,10 @@ public class RestaurantRepositoryTest {
         entityManager.persist(restaurantData);
         entityManager.flush();
 
-        UserData userFound = userRepository.getOne((long)1);
+        UserData userFound = userRepository.getOne(id);
         RestaurantData restaurantFound = restaurantRepository.getOne("1");
         assertThat(userFound).isEqualTo(restaurantData.getUserData());
+        assertThat(restaurantFound).isEqualTo(restaurantData);
 
     }
 }

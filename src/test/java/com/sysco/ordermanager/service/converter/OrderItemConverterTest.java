@@ -8,7 +8,7 @@ import com.sysco.ordermanager.util.enums.OrderStatus;
 import com.sysco.ordermanager.web.api.Item;
 import com.sysco.ordermanager.web.api.Order;
 import com.sysco.ordermanager.web.api.OrderItem;
-import com.sysco.ordermanager.web.api.User;
+import com.sysco.ordermanager.web.api.UserDTO;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,11 +21,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.util.HashSet;
 
 import static org.junit.Assert.*;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles(profiles = {"test"})
 @WebAppConfiguration
 @SpringBootTest
-
 public class OrderItemConverterTest {
 
     @Autowired
@@ -48,7 +48,7 @@ public class OrderItemConverterTest {
 
     @Test
     public void convertOrderItemToOrderItemData1() {
-        Order order=new Order(22L,"INCO",new User(2L,"dsf","212"), OrderStatus.READY,new HashSet<>());
+        Order order=new Order(22L,"INCO",new UserDTO(2L,"dsf"), OrderStatus.READY,new HashSet<>());
 
         Item item=new Item();
         item.setId(33);

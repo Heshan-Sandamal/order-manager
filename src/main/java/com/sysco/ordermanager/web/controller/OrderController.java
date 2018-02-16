@@ -2,23 +2,28 @@ package com.sysco.ordermanager.web.controller;
 
 import com.sysco.ordermanager.service.OrderService;
 import com.sysco.ordermanager.web.api.Order;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
-import java.util.ArrayList;
+
 
 /**
  * Created by vibodhab on 2/8/18.
  */
 @RestController
-@RequestMapping(path = "/order")
+@RequestMapping(path = "api/order")
 public class OrderController {
 
     @Autowired
     OrderService orderService;
+
 
 
     @GetMapping("/{order_id}")

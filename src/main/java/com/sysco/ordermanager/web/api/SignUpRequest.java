@@ -1,31 +1,16 @@
 package com.sysco.ordermanager.web.api;
 
-public class User {
 
-    private Long id;
+public class SignUpRequest {
     private String name;
     private String password;
 
-    public User() {
+    public SignUpRequest() {
     }
 
-    public User(Long id, String name, String password) {
-        this.id = id;
+    public SignUpRequest(String name, String password) {
         this.name = name;
         this.password = password;
-    }
-
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -43,4 +28,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

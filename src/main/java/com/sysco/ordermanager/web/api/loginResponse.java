@@ -1,22 +1,22 @@
 package com.sysco.ordermanager.web.api;
 
 public class loginResponse {
-    private String id;
+    private Long id;
     private String name;
 
     public loginResponse() {
     }
 
-    public loginResponse(String id, String name) {
+    public loginResponse(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -3,6 +3,7 @@ package com.sysco.ordermanager.domain.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -13,20 +14,10 @@ public class ItemData implements Serializable{
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
-    @Column
-    private String name;
 
-    @Column
-    private String category;
+    public ItemData() {
 
-    @Column
-    private String vendor;
-
-    @Column
-    private Integer stock;
-
-    @OneToMany(mappedBy = "itemData")
-    private Set<OrderItemData> itemOrders=new HashSet<>();
+    }
 
     public ItemData(String name, String category, String vendor, Integer stock) {
         this.name = name;
@@ -42,6 +33,25 @@ public class ItemData implements Serializable{
     public void setStock(Integer stock) {
         this.stock = stock;
     }
+
+
+    @Column
+    private String name;
+
+    @Column
+    private String category;
+
+    @Column
+    private String vendor;
+
+    @Column
+    private Integer stock;
+
+    @OneToMany(mappedBy = "orderItemId.item")
+    private Set<OrderItemData> itemOrders=new HashSet<>();
+
+
+
     public int getId() {
         return id;
     }
@@ -70,17 +80,31 @@ public class ItemData implements Serializable{
         this.vendor = vendor;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
     }
 
 
     public Set<OrderItemData> getItemOrders() {
         return itemOrders;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemData itemData = (ItemData) o;
+        return getId() == itemData.getId() &&
+                Objects.equals(getName(), itemData.getName()) &&
+                Objects.equals(getCategory(), itemData.getCategory()) &&
+                Objects.equals(getVendor(), itemData.getVendor()) &&
+                Objects.equals(getStock(), itemData.getStock());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getId(), getName(), getCategory(), getVendor(), getStock());
     }
 
     public void setItemOrders(Set<OrderItemData> itemOrders) {

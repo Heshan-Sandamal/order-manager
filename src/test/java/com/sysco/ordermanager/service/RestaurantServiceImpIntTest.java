@@ -35,13 +35,13 @@ public class RestaurantServiceImpIntTest {
 
     @Test(expected = RestaurantNotFoundException.class)
     public void updateRestaurantTest(){
-        UserData userData = new UserData("1", "vibodha", "123");
+        UserData userData = new UserData(1L, "vibodha", "123");
         userRepository.save(userData);
 
         RestaurantData restaurantData = new RestaurantData("1", "102/16, sdfsd", userData);
         restaurantRepository.save(restaurantData);
 
-        User user = new User("1", "vibodha", "123");
+        User user = new User(1L, "vibodha", "123");
         Restaurant updatedRestaurant = new Restaurant("2", "102/13, sddfdffsd", user);
 
         restaurantService.updateRestaurant(updatedRestaurant);

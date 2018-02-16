@@ -1,6 +1,5 @@
 package com.sysco.ordermanager.service;
 
-import com.sysco.ordermanager.domain.model.OrderData;
 import com.sysco.ordermanager.web.api.Order;
 
 import java.util.List;
@@ -12,9 +11,11 @@ import java.util.ArrayList;
 
 public interface OrderService {
 
-    public Order setOrder(Order order);
     void setOrders(List<Order> orders);
-    public Order getOrder(String id);
-    public ArrayList<Order> getUserOrders(String id);
+    public Order cancelOrder(Long id);
+    Order getOrder(Long id);
+    List<Order> getOrders();
+    Order setOrder(Order order);
+    List<Order> getUserOrders(Long id);
 
 }

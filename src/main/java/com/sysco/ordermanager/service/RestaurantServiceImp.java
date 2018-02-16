@@ -45,9 +45,7 @@ public class RestaurantServiceImp implements RestaurantService{
     @CheckRestaurantExist
     @Transactional
     public Restaurant updateRestaurant(Restaurant restaurant){
-        RestaurantData oldRestaurantData = restaurantRepository.getOne(restaurant.getId());
         RestaurantData restaurantData = restaurantConverter.convertRestaurantToRestaurantData(restaurant);
-        restaurantData.setId(oldRestaurantData.getId());
         return restaurantConverter.convertRestaurantDataToRestaurant(restaurantRepository.save(restaurantData));
     }
 }

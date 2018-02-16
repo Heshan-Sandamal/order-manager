@@ -31,14 +31,14 @@ public class RestaurantRepositoryTest {
     public void createRestaurant() {
 
         UserData userData = new UserData(
-
-                (long)1,
                 "vibodha",
                 "123"
         );
 
         entityManager.persist(userData);
         entityManager.flush();
+
+        long id = (long) entityManager.getId(userData);
 
         RestaurantData restaurantData = new RestaurantData(
                 "1",
@@ -49,7 +49,7 @@ public class RestaurantRepositoryTest {
         entityManager.persist(restaurantData);
         entityManager.flush();
 
-        UserData userFound = userRepository.getOne((long)1);
+        UserData userFound = userRepository.getOne(id);
         RestaurantData restaurantFound = restaurantRepository.getOne("1");
         assertThat(userFound).isEqualTo(restaurantData.getUserData());
 

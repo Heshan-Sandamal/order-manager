@@ -3,6 +3,7 @@ package com.sysco.ordermanager.web.api;
 import com.sysco.ordermanager.util.enums.OrderStatus;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -25,9 +26,24 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return Objects.equals(getId(), order.getId());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getId());
+    }
+
     public Order(String type, User user, OrderStatus orderStatus) {
         this.type = type;
         this.user = user;
+
         this.orderStatus = orderStatus;
     }
 

@@ -6,6 +6,7 @@ import com.sysco.ordermanager.util.enums.OrderStatus;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -58,6 +59,8 @@ public class OrderData implements Serializable {
 
     public void setItems(Set<OrderItemData> orderItems) {
         this.orderItems = orderItems;
+        this.orderStatus = OrderStatus.CREATED;
+
     }
 
     public OrderStatus getOrderStatus() {
@@ -98,5 +101,19 @@ public class OrderData implements Serializable {
 
     public void setUserData(UserData userData) {
         this.userData = userData;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderData orderData = (OrderData) o;
+        return Objects.equals(getId(), orderData.getId());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getId());
     }
 }

@@ -2,7 +2,7 @@ package com.sysco.ordermanager.web.controller;
 
 import com.sysco.ordermanager.service.RestaurantService;
 import com.sysco.ordermanager.web.api.Restaurant;
-import com.sysco.ordermanager.web.api.User;
+import com.sysco.ordermanager.web.api.UserDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +27,8 @@ public class RestaurantControllerTest {
 
     @Test
     public void getUser() throws Exception{
-        User user = new User(
-                "vibodha",
+        UserDTO user = new UserDTO(
+                (long)1,
                 "123"
         );
         Restaurant restaurant = new Restaurant(

@@ -27,11 +27,11 @@ public class RestaurantServiceValidationAspect {
     @Before("execution(@com.sysco.ordermanager.aspect.anotation.ValidateUserNotFound * *(..))")
     public void validateUser(JoinPoint joinPoint){
         Restaurant restaurant = (Restaurant) joinPoint.getArgs()[0];
-        if(restaurant.getUser()==null){
+        if(restaurant.getUserDTO()==null){
             throw UserNotFoundException.getInstance();
         }
         try {
-            userRepository.getOne(restaurant.getUser().getId()).getId();
+            userRepository.getOne(restaurant.getUserDTO().getId()).getId();
         }
         catch (EntityNotFoundException e){
             throw UserNotFoundException.getInstance();

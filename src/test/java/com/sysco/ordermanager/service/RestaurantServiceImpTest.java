@@ -57,10 +57,7 @@ public class RestaurantServiceImpTest {
     @Before
     public void setup(){
         UserData userData = new UserData(
-<<<<<<< HEAD
                 (long)1,
-=======
->>>>>>> dev
                 "vibodha",
                 "123"
         );
@@ -69,14 +66,8 @@ public class RestaurantServiceImpTest {
                 "102/16/1, meegoda",
                 userData
         );
-<<<<<<< HEAD
-        // TODO: 2/13/18
-//        remove long to string
 
-        Mockito.when(restaurantRepository.getOne(Long.toString(restaurantData.getUserData().getId())))
-=======
         Mockito.when(restaurantRepository.getOne("1"))
->>>>>>> dev
                 .thenReturn(restaurantData);
 
         Mockito.when(userRepository.getOne((long)1))

@@ -31,10 +31,8 @@ public class RestaurantRepositoryTest {
     public void createRestaurant() {
 
         UserData userData = new UserData(
-<<<<<<< HEAD
+
                 (long)1,
-=======
->>>>>>> dev
                 "vibodha",
                 "123"
         );

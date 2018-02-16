@@ -1,14 +1,13 @@
 package com.sysco.ordermanager.web.api;
 
-public class LoginRequest {
+public class SignUpRequest {
     private String name;
     private String password;
 
-    public LoginRequest() {
-
+    public SignUpRequest() {
     }
 
-    public LoginRequest(String name, String password) {
+    public SignUpRequest(String name, String password) {
         this.name = name;
         this.password = password;
     }
@@ -28,4 +27,5 @@ public class LoginRequest {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

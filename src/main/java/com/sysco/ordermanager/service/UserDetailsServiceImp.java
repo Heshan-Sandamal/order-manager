@@ -24,18 +24,5 @@ public class UserDetailsServiceImp implements UserDetailsService{
         }
         return new User(userData.getId().toString(),userData.getPassword(),emptyList());
     }
+
 }
-
-
-
-//
-//
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        ApplicationUser applicationUser = applicationUserRepository.findByUsername(username);
-//        if (applicationUser == null) {
-//            throw new UsernameNotFoundException(username);
-//        }
-//        return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
-//    }
-//}

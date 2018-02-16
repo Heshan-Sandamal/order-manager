@@ -1,32 +1,36 @@
 package com.sysco.ordermanager.service.converter;
 
 import com.sysco.ordermanager.domain.model.UserData;
+import com.sysco.ordermanager.web.api.LoginRequest;
+import com.sysco.ordermanager.web.api.SignUpRequest;
 import com.sysco.ordermanager.web.api.UserDTO;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserConverter {
-    public UserDTO convertUserDataToUser(UserData userData){
-        return new UserDTO(
-                Long.toString(userData.getId()),
-                userData.getName(),
-                null
-        );
-    }
 
     public UserData convertUserToUserData(UserDTO userDTO){
+        // TODO: 2/16/18
         return new UserData(
-                Long.valueOf(userDTO.getId()),
+                userDTO.getId(),
                 userDTO.getName(),
-                userDTO.getPassword()
+                ""
         );
     }
 
-    // TODO: 2/13/18
-//    public loginResponse convertUserDataToUserResponse(UserData userdata){
-//        return new loginResponse(
-//                userdata.getId(),
-//                userdata.getName()
-//        );
-//    }
+    public UserData convertLoginRequestToUserData(SignUpRequest signUpRequest){
+        return new UserData(
+                (long)0,
+                signUpRequest.getName(),
+                signUpRequest.getPassword()
+        );
+    }
+
+    public UserDTO convertUserDataToUserDTO(UserData userData){
+        return new UserDTO(
+                userData.getId(),
+                userData.getName()
+        );
+
+    }
 }

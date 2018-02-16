@@ -15,7 +15,7 @@ public class RestaurantConverter {
         return new Restaurant(
                 restaurantData.getId(),
                 restaurantData.getAddress(),
-                userConverter.convertUserDataToUser(restaurantData.getUserData())
+                userConverter.convertUserDataToUserDTO(restaurantData.getUserData())
         );
     }
 

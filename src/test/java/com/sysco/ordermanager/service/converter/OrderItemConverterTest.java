@@ -21,11 +21,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.util.HashSet;
 
 import static org.junit.Assert.*;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles(profiles = {"test"})
 @WebAppConfiguration
 @SpringBootTest
-
 public class OrderItemConverterTest {
 
     @Autowired

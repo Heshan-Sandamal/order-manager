@@ -52,10 +52,10 @@ public class DbSeeder implements CommandLineRunner {
 //        orderRepository.deleteAll();
 //        orderRepository.save(orderData);
 
-        UserDTO user = new UserDTO((long)11, "123");
+        UserDTO user = new UserDTO("123");
         user=userConverter.convertUserDataToUserDTO(userRepository.save(userConverter.convertUserToUserData(user)));
 
-        Item item = new Item(1,"test-item", "abc", "xxx", 100);
+        Item item = new Item("test-item", "abc", "xxx", 100);
         item = itemService.addItem(item);
 
 

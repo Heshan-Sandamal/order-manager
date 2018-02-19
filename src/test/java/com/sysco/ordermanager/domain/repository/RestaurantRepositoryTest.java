@@ -43,8 +43,10 @@ public class RestaurantRepositoryTest {
                 userData
         );
 
-        RestaurantData restaurantData1 = entityManager.persist(restaurantData);
-        entityManager.flush();
+//        RestaurantData restaurantData1 = entityManager.persist(restaurantData);
+//        entityManager.flush();
+
+        RestaurantData restaurantData1 = restaurantRepository.save(restaurantData);
 
         System.out.println(userData1.getId());
 

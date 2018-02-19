@@ -6,22 +6,32 @@ import com.sysco.ordermanager.web.api.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ItemServiceImpl implements ItemService{
 
     @Autowired
-    ItemRepository itemRepository;
+    private ItemRepository itemRepository;
 
     @Autowired
-    ItemConverter itemConverter;
+    private ItemConverter itemConverter;
 
     @Override
-    public Item getItem(String id) {
+    public Item getItem(long id) {
         return null;
     }
 
     @Override
     public Item addItem(Item item) {
         return itemConverter.convertItemDataToItem(itemRepository.save(itemConverter.convertItemToItemData(item)));
+    }
+
+    @Override
+    public List<Item> getItem() {
+        return itemRepository.findAll().stream()
+                .map(itemData -> itemConverter.convertItemDataToItem(itemData))
+                .collect(Collectors.toList());
     }
 }

@@ -1,8 +1,8 @@
 package com.sysco.ordermanager.web.api;
 
 import com.sysco.ordermanager.util.enums.OrderStatus;
+import com.sysco.ordermanager.util.enums.OrderType;
 
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -10,7 +10,7 @@ import java.util.Set;
  */
 public class Order {
     private Long id;
-    private String type;
+    private OrderType type;
     private User user;
     private OrderStatus orderStatus;
     private Set<OrderItem> orderItems;
@@ -18,20 +18,20 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, String type, User user, OrderStatus orderStatus) {
+    public Order(Long id, OrderType type, User user, OrderStatus orderStatus) {
         this.id = id;
         this.type = type;
         this.user = user;
         this.orderStatus = orderStatus;
     }
 
-    public Order(String type, User user, OrderStatus orderStatus) {
+    public Order(OrderType type, User user, OrderStatus orderStatus) {
         this.type = type;
         this.user = user;
         this.orderStatus = orderStatus;
     }
 
-    public Order(Long id, String type, User user, OrderStatus orderStatus, Set<OrderItem> orderItems) {
+    public Order(Long id, OrderType type, User user, OrderStatus orderStatus, Set<OrderItem> orderItems) {
         this.id = id;
         this.type = type;
         this.user = user;
@@ -63,11 +63,11 @@ public class Order {
         this.id = id;
     }
 
-    public String getType() {
+    public OrderType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(OrderType type) {
         this.type = type;
     }
 

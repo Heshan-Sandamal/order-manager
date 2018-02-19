@@ -1,6 +1,7 @@
 package com.sysco.ordermanager.domain.repository;
 
 import com.sysco.ordermanager.domain.model.OrderData;
+import com.sysco.ordermanager.util.enums.OrderType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,5 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<OrderData, Long> {
     public List<OrderData> findByUserDataId(Long id);
-    public List<OrderData> findByType(String type);
-
+    public List<OrderData> findByType(OrderType type);
 }

@@ -2,6 +2,7 @@ package com.sysco.ordermanager.domain.repository;
 
 import com.sysco.ordermanager.domain.model.*;
 import com.sysco.ordermanager.util.enums.OrderStatus;
+import com.sysco.ordermanager.util.enums.OrderType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,28 +36,13 @@ public class OrderRepositoryTest {
     @Test
     public void getOneTest() {
 
-        UserData userData = new UserData(
-                "vibodha",
-                "123"
-        );
+        UserData userData = new UserData("vibodha", "123");
 
-        OrderData orderData = new OrderData(
-                "coke",
-                userData,
-                OrderStatus.CREATED
-        );
+        OrderData orderData = new OrderData(OrderType.ALTERNATEORDER, userData, OrderStatus.CREATED);
 
-        ItemData itemData = new ItemData(
-                "Pepsi",
-                "Drink",
-                "Pepsico",
-                12
-        );
+        ItemData itemData = new ItemData("Pepsi", "Drink", "Pepsico", 12);
 
-        OrderItemData orderItemData = new OrderItemData(
-                new OrderItemId(orderData, itemData),
-                10
-        );
+        OrderItemData orderItemData = new OrderItemData(new OrderItemId(orderData, itemData), 10);
 
         final Set<OrderItemData> orderItems = new HashSet<>();
         orderItems.add(orderItemData);
@@ -77,9 +63,9 @@ public class OrderRepositoryTest {
         UserData userData1 = new UserData("vibodha", "123");
         UserData userData2 = new UserData("chamath", "1234");
 
-        OrderData orderData1 = new OrderData("coke1", userData1, OrderStatus.CREATED);
-        OrderData orderData2 = new OrderData("coke2", userData1, OrderStatus.CREATED);
-        OrderData orderData3 = new OrderData("coke3", userData2, OrderStatus.CREATED);
+        OrderData orderData1 = new OrderData(OrderType.WILLCALL, userData1, OrderStatus.CREATED);
+        OrderData orderData2 = new OrderData(OrderType.NORMAL, userData1, OrderStatus.CREATED);
+        OrderData orderData3 = new OrderData(OrderType.ALTERNATEORDER, userData2, OrderStatus.CREATED);
 
         ItemData itemData1 = new ItemData("Pepsi", "Drink", "Pepsico", 12);
         ItemData itemData2 = new ItemData("Pepsi", "Drink", "Pepsico", 12);
@@ -109,9 +95,9 @@ public class OrderRepositoryTest {
 
         entityManager.persist(userData1);
         entityManager.persist(userData2);
-        final OrderData persistOrder1 = entityManager.persist(orderData1);
-        final OrderData persistOrder2 = entityManager.persist(orderData2);
-        final OrderData persistOrder3 = entityManager.persist(orderData3);
+        entityManager.persist(orderData1);
+        entityManager.persist(orderData2);
+        entityManager.persist(orderData3);
         entityManager.persist(orderItemData1);
         entityManager.persist(orderItemData2);
         entityManager.persist(orderItemData3);
@@ -129,7 +115,49 @@ public class OrderRepositoryTest {
 
     @Test
     public void getOrdersByType() {
-        List<OrderData> orderDataList = orderRepository.findByType("type1");
-        orderDataList.forEach(orderData -> System.out.println(orderData.getId() + " " + orderData.getType()));
+        UserData userData1 = new UserData("vibodha", "123");
+
+        OrderData orderData1 = new OrderData(OrderType.NORMAL, userData1, OrderStatus.CREATED);
+        OrderData orderData2 = new OrderData(OrderType.NORMAL, userData1, OrderStatus.CREATED);
+        OrderData orderData3 = new OrderData(OrderType.SPECIALORDER, userData1, OrderStatus.CREATED);
+
+        ItemData itemData1 = new ItemData("Pepsi", "Drink", "Pepsico", 12);
+        ItemData itemData2 = new ItemData("Beer", "Drink", "Pepsico", 12);
+
+        OrderItemData orderItemData1 = new OrderItemData(new OrderItemId(orderData1, itemData1), 10);
+        OrderItemData orderItemData2 = new OrderItemData(new OrderItemId(orderData2, itemData1), 10);
+        OrderItemData orderItemData3 = new OrderItemData(new OrderItemId(orderData3, itemData2), 10);
+
+        final Set<OrderItemData> orderItems1 = new HashSet<>();
+        orderItems1.add(orderItemData1);
+        orderData1.setOrderItems(orderItems1);
+
+        final Set<OrderItemData> orderItems2 = new HashSet<>();
+        orderItems2.add(orderItemData2);
+        orderData2.setOrderItems(orderItems2);
+
+        final Set<OrderItemData> orderItems3 = new HashSet<>();
+        orderItems3.add(orderItemData3);
+        orderData3.setOrderItems(orderItems3);
+
+        entityManager.persist(itemData1);
+        entityManager.persist(itemData2);
+
+        entityManager.persist(userData1);
+        entityManager.persist(orderData1);
+        entityManager.persist(orderData2);
+        entityManager.persist(orderData3);
+        entityManager.persist(orderItemData1);
+        entityManager.persist(orderItemData2);
+        entityManager.persist(orderItemData3);
+        entityManager.flush();
+
+        OrderType orderData1Type = orderData1.getType();
+        List<OrderData> ordersFound = orderRepository.findByType(orderData1Type);
+        assertThat(ordersFound.size()).isEqualTo(2); // 2 orders
+        System.out.println("ordersFound.size() :" + ordersFound.size());
+        for (OrderData order : ordersFound) {
+            assertThat(order.getType()).isEqualTo(orderData1Type);
+        }
     }
 }

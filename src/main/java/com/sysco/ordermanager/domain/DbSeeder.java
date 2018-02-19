@@ -7,6 +7,7 @@ import com.sysco.ordermanager.service.OrderService;
 import com.sysco.ordermanager.service.converter.ItemConverter;
 import com.sysco.ordermanager.service.converter.UserConverter;
 import com.sysco.ordermanager.util.enums.OrderStatus;
+import com.sysco.ordermanager.util.enums.OrderType;
 import com.sysco.ordermanager.web.api.Item;
 import com.sysco.ordermanager.web.api.Order;
 import com.sysco.ordermanager.web.api.OrderItem;
@@ -59,7 +60,7 @@ public class DbSeeder implements CommandLineRunner {
         item = itemService.addItem(item);
 
 
-        Order order = new Order("aaa", user, OrderStatus.CREATED);
+        Order order = new Order(OrderType.DROPSHIP, user, OrderStatus.CREATED);
 
         OrderItem oid = new OrderItem(order, item, 22.3);
 

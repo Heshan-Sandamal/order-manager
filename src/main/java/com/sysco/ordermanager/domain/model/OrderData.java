@@ -2,6 +2,7 @@ package com.sysco.ordermanager.domain.model;
 
 
 import com.sysco.ordermanager.util.enums.OrderStatus;
+import com.sysco.ordermanager.util.enums.OrderType;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,7 +22,7 @@ public class OrderData implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String type;
+    private OrderType type;
 
     @OneToMany(mappedBy = "orderItemId.order", cascade = {CascadeType.ALL})
     private Set<OrderItemData> orderItems = new HashSet<>();
@@ -32,7 +33,7 @@ public class OrderData implements Serializable {
 
     private OrderStatus orderStatus;
 
-    public OrderData(String type, UserData userData) {
+    public OrderData(OrderType type, UserData userData) {
         this.type = type;
         this.userData = userData;
     }
@@ -40,14 +41,14 @@ public class OrderData implements Serializable {
     public OrderData() {
     }
 
-    public OrderData(Long id, String type, UserData userData, OrderStatus orderStatus) {
+    public OrderData(Long id, OrderType type, UserData userData, OrderStatus orderStatus) {
         this.id = id;
         this.type = type;
         this.userData = userData;
         this.orderStatus = orderStatus;
     }
 
-    public OrderData(String type, UserData userData, OrderStatus orderStatus) {
+    public OrderData(OrderType type, UserData userData, OrderStatus orderStatus) {
         this.type = type;
         this.userData = userData;
         this.orderStatus = orderStatus;
@@ -79,11 +80,11 @@ public class OrderData implements Serializable {
         this.id = id;
     }
 
-    public String getType() {
+    public OrderType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(OrderType type) {
         this.type = type;
     }
 

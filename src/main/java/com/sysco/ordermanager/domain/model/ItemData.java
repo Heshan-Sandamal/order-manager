@@ -12,7 +12,7 @@ public class ItemData implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private long id;
 
 
     public ItemData() {
@@ -26,7 +26,7 @@ public class ItemData implements Serializable{
         this.stock = stock;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -52,7 +52,7 @@ public class ItemData implements Serializable{
 
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

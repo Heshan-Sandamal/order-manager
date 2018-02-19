@@ -1,15 +1,21 @@
 package com.sysco.ordermanager.web.api;
 
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class Item {
-    private Integer id;
+    private long id;
+
+    @NotNull
     private String name;
+
+    @NotNull
     private String category;
+
     private String vendor;
     private Integer stock;
 
-    public Item(Integer id, String name, String category, String vendor, Integer stock) {
+    public Item(long id, String name, String category, String vendor, Integer stock) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -27,11 +33,11 @@ public class Item {
     public Item() {
     }
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 

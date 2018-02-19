@@ -13,6 +13,10 @@ public class UserDTO {
         this.name = name;
     }
 
+    public UserDTO(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

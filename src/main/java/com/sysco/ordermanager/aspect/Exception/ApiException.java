@@ -7,7 +7,6 @@ public class ApiException extends RuntimeException {
     private final ErrorResponse errorResponse;
 
     public ApiException(ErrorResponse errorResponse){
-//        super();
         this.errorResponse = errorResponse;
     }
 

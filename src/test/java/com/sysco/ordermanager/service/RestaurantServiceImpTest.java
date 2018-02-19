@@ -61,11 +61,11 @@ public class RestaurantServiceImpTest {
                 "123"
         );
         RestaurantData restaurantData = new RestaurantData(
-                "1",
+                1L,
                 "102/16/1, meegoda",
                 userData
         );
-        Mockito.when(restaurantRepository.getOne("1"))
+        Mockito.when(restaurantRepository.getOne(1L))
                 .thenReturn(restaurantData);
 
         Mockito.when(userRepository.getOne((long)1))
@@ -75,7 +75,7 @@ public class RestaurantServiceImpTest {
 
     @Test
     public void getRestaurant() {
-        Restaurant restaurant = restaurantService.getRestaurant("1");
+        Restaurant restaurant = restaurantService.getRestaurant(1L);
         assertThat(restaurant.getUser().getName()).isEqualTo("vibodha");
     }
 

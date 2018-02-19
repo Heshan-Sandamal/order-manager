@@ -32,12 +32,12 @@ public class RestaurantControllerTest {
                 "123"
         );
         Restaurant restaurant = new Restaurant(
-                "1",
+                1L,
                 "102/16/1, meegoda",
                 user
         );
 
-        given(restaurantService.getRestaurant("1")).willReturn(restaurant);
+        given(restaurantService.getRestaurant(1L)).willReturn(restaurant);
 
         mvc.perform(get("/restaurant/1")
                 .contentType(MediaType.APPLICATION_JSON))

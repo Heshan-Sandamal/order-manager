@@ -12,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.omg.CORBA.INTERNAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -23,7 +22,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles(profiles = {"test"})
@@ -46,7 +46,7 @@ public class OrderServiceImpTest {
     private final Long ORDER_ID=2L;
     private final Integer ITEM_ID=2;
     private final String TYPE="Test-type";
-    private double ORDER_ITEM_AMOUNT=34;
+    private final double ORDER_ITEM_AMOUNT=34;
 
     @Test
     public void setOrder() {

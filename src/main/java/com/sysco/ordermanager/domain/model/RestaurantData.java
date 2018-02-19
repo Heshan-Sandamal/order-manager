@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class RestaurantData {
 
     @Id
-    @Column
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @Column
     private String address;
@@ -19,17 +19,22 @@ public class RestaurantData {
     public RestaurantData() {
     }
 
-    public RestaurantData(String id, String address, UserData userData) {
+    public RestaurantData(String address, UserData userData) {
+        this.address = address;
+        this.userData = userData;
+    }
+
+    public RestaurantData(long id, String address, UserData userData) {
         this.id = id;
         this.address = address;
         this.userData = userData;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

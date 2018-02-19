@@ -11,7 +11,7 @@ import com.sysco.ordermanager.util.enums.OrderType;
 import com.sysco.ordermanager.web.api.Item;
 import com.sysco.ordermanager.web.api.Order;
 import com.sysco.ordermanager.web.api.OrderItem;
-import com.sysco.ordermanager.web.api.User;
+import com.sysco.ordermanager.web.api.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -53,10 +53,10 @@ public class DbSeeder implements CommandLineRunner {
 //        orderRepository.deleteAll();
 //        orderRepository.save(orderData);
 
-        User user = new User("Shanika", "123");
-        user=userConverter.convertUserDataToUser(userRepository.save(userConverter.convertUserToUserData(user)));
+        UserDTO user = new UserDTO("123");
+        user=userConverter.convertUserDataToUserDTO(userRepository.save(userConverter.convertUserToUserData(user)));
 
-        Item item = new Item(1,"test-item", "abc", "xxx", 100);
+        Item item = new Item("test-item", "abc", "xxx", 100);
         item = itemService.addItem(item);
 
 

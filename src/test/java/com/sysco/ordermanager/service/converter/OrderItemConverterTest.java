@@ -9,7 +9,7 @@ import com.sysco.ordermanager.util.enums.OrderType;
 import com.sysco.ordermanager.web.api.Item;
 import com.sysco.ordermanager.web.api.Order;
 import com.sysco.ordermanager.web.api.OrderItem;
-import com.sysco.ordermanager.web.api.User;
+import com.sysco.ordermanager.web.api.UserDTO;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,8 +48,8 @@ public class OrderItemConverterTest {
     }
 
     @Test
-    public void convertOrderItemToOrderItemData1() {
-        Order order=new Order(22L, OrderType.ALTERNATEORDER,new User(2L,"dsf","212"), OrderStatus.READY,new HashSet<>());
+    public void convertOrderItemToOrderItemDataWithExistingOrderData() {
+        Order order=new Order(22L, OrderType.ALTERNATEORDER,new UserDTO(2L,"dsf"), OrderStatus.READY,new HashSet<>());
 
         Item item=new Item();
         item.setId(33);

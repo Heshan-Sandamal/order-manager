@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(path = "/restaurant")
+@RequestMapping(path = "api/restaurant")
 public class RestaurantController {
 
     @Autowired
     private RestaurantService restaurantService;
 
     @GetMapping(path = "/{id}")
-    public Restaurant getRestaurant(@PathVariable String id){
+    public Restaurant getRestaurant(@PathVariable long id){
         return restaurantService.getRestaurant(id);
     }
 

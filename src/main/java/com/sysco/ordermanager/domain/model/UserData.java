@@ -1,16 +1,19 @@
 package com.sysco.ordermanager.domain.model;
 
 import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class UserData {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
 
     private String password;
@@ -31,6 +34,7 @@ public class UserData {
         this.name = name;
         this.password = password;
     }
+
 
     public Long getId() {
         return id;

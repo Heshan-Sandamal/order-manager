@@ -11,30 +11,30 @@ import java.util.Set;
 public class Order {
     private Long id;
     private OrderType type;
-    private User user;
+    private UserDTO userDTO;
     private OrderStatus orderStatus;
     private Set<OrderItem> orderItems;
 
     public Order() {
     }
 
-    public Order(Long id, OrderType type, User user, OrderStatus orderStatus) {
+    public Order(Long id, OrderType type, UserDTO userDTO, OrderStatus orderStatus) {
         this.id = id;
         this.type = type;
-        this.user = user;
+        this.userDTO = userDTO;
         this.orderStatus = orderStatus;
     }
 
-    public Order(OrderType type, User user, OrderStatus orderStatus) {
+    public Order(OrderType type, UserDTO userDTO, OrderStatus orderStatus) {
         this.type = type;
-        this.user = user;
+        this.userDTO = userDTO;
         this.orderStatus = orderStatus;
     }
 
-    public Order(Long id, OrderType type, User user, OrderStatus orderStatus, Set<OrderItem> orderItems) {
+    public Order(Long id, OrderType type, UserDTO userDTO, OrderStatus orderStatus, Set<OrderItem> orderItems) {
         this.id = id;
         this.type = type;
-        this.user = user;
+        this.userDTO = userDTO;
         this.orderStatus = orderStatus;
         this.orderItems = orderItems;
     }
@@ -47,12 +47,12 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public User getUser() {
-        return user;
+    public UserDTO getUser() {
+        return userDTO;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 
     public Long getId() {

@@ -13,15 +13,16 @@ public class Restaurant {
     private String address;
 
     @NotNull
-    private User user;
+    private UserDTO userDTO;
+
 
     public Restaurant() {
     }
 
-    public Restaurant(long id, String address, User user) {
+    public Restaurant(long id, String address, UserDTO userDTO) {
         this.id = id;
         this.address = address;
-        this.user = user;
+        this.userDTO = userDTO;
     }
 
     public long getId() {
@@ -40,11 +41,11 @@ public class Restaurant {
         this.address = address;
     }
 
-    public User getUser() {
-        return user;
+    public UserDTO getUserDTO() {
+        return userDTO;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 }

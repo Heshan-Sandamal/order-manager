@@ -6,7 +6,7 @@ import com.sysco.ordermanager.domain.model.UserData;
 import com.sysco.ordermanager.domain.repository.RestaurantRepository;
 import com.sysco.ordermanager.domain.repository.UserRepository;
 import com.sysco.ordermanager.web.api.Restaurant;
-import com.sysco.ordermanager.web.api.User;
+import com.sysco.ordermanager.web.api.UserDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class RestaurantServiceImpIntTest {
         RestaurantData restaurantData = new RestaurantData(1L, "102/16, sdfsd", userData);
         restaurantRepository.save(restaurantData);
 
-        User user = new User(1L, "vibodha", "123");
+        UserDTO user = new UserDTO(1L, "vibodha");
         Restaurant updatedRestaurant = new Restaurant(2L, "102/13, sddfdffsd", user);
 
         restaurantService.updateRestaurant(updatedRestaurant);

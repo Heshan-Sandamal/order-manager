@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(path = "/restaurant")
+@RequestMapping(path = "api/restaurant")
 public class RestaurantController {
 
     @Autowired

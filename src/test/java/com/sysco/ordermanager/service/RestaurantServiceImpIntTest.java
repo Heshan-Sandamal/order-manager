@@ -38,11 +38,11 @@ public class RestaurantServiceImpIntTest {
         UserData userData = new UserData(1L, "vibodha", "123");
         userRepository.save(userData);
 
-        RestaurantData restaurantData = new RestaurantData("1", "102/16, sdfsd", userData);
+        RestaurantData restaurantData = new RestaurantData(1L, "102/16, sdfsd", userData);
         restaurantRepository.save(restaurantData);
 
         UserDTO user = new UserDTO(1L, "vibodha");
-        Restaurant updatedRestaurant = new Restaurant("2", "102/13, sddfdffsd", user);
+        Restaurant updatedRestaurant = new Restaurant(2L, "102/13, sddfdffsd", user);
 
         restaurantService.updateRestaurant(updatedRestaurant);
 

@@ -29,7 +29,7 @@ public class RestaurantServiceImp implements RestaurantService{
 
     @Override
     @ValidateGetRequestId
-    public Restaurant getRestaurant(String id) {
+    public Restaurant getRestaurant(long id) {
         return restaurantConverter.convertRestaurantDataToRestaurant(restaurantRepository.getOne(id));
     }
 

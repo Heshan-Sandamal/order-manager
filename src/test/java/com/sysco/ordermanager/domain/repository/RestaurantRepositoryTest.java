@@ -35,24 +35,22 @@ public class RestaurantRepositoryTest {
                 "123"
         );
 
-        entityManager.persist(userData);
+        UserData userData1 = entityManager.persist(userData);
         entityManager.flush();
 
-        long id = (long) entityManager.getId(userData);
-
         RestaurantData restaurantData = new RestaurantData(
-                "1",
                 "102/16/1, meegoda",
                 userData
         );
 
-        entityManager.persist(restaurantData);
+        RestaurantData restaurantData1 = entityManager.persist(restaurantData);
         entityManager.flush();
 
-        UserData userFound = userRepository.getOne(id);
-        RestaurantData restaurantFound = restaurantRepository.getOne("1");
+        System.out.println(userData1.getId());
+
+        UserData userFound = userRepository.getOne(userData1.getId());
+        RestaurantData restaurantFound = restaurantRepository.getOne(restaurantData1.getId());
         assertThat(userFound).isEqualTo(restaurantData.getUserData());
-        assertThat(restaurantFound).isEqualTo(restaurantData);
 
     }
 }

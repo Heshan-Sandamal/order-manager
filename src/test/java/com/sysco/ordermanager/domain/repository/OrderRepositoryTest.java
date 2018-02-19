@@ -2,6 +2,7 @@ package com.sysco.ordermanager.domain.repository;
 
 import com.sysco.ordermanager.domain.model.*;
 import com.sysco.ordermanager.util.enums.OrderStatus;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,13 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class) // need for assert functions
-//@ActiveProfiles(profiles = {"test"})  // need for a separate testing env // no need for UT need for IT
-//@WebAppConfiguration //take the current webapp config
 @ActiveProfiles(profiles = {"test"})
 @DataJpaTest
 public class OrderRepositoryTest {
+
+    private final Long ORDER_ID=2L;
+    private final String TYPE="Test-type";
+    private final double ORDER_ITEM_AMOUNT=34;
 
     @Autowired
     public OrderRepository orderRepository;
@@ -31,6 +34,36 @@ public class OrderRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;
+
+
+
+    @Test
+    public void setOrderTest(){
+
+        UserData userData=new UserData();
+        userData=entityManager.persist(userData);
+
+        ItemData itemData=new ItemData();
+        itemData=entityManager.persist(itemData);
+
+        entityManager.flush();
+
+        OrderData orderData=new OrderData(TYPE, userData, OrderStatus.CREATED);
+
+        OrderData orderDataReturn=new OrderData(TYPE, userData, OrderStatus.CREATED);
+        orderDataReturn.setId(ORDER_ID);
+
+        final Set<OrderItemData> orderItemDataSet = new HashSet<>();
+        orderItemDataSet.add(new OrderItemData(new OrderItemId(orderData,itemData),ORDER_ITEM_AMOUNT));
+
+        orderData.setOrderItems(orderItemDataSet);
+
+        final OrderData persist = orderRepository.save(orderData);
+        final OrderData searchedOrderDataOb = entityManager.find(OrderData.class,persist.getId());
+
+        Assert.assertEquals(persist,searchedOrderDataOb);
+
+    }
 
     @Test
     public void getOneTest() {

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public interface OrderService {
 
     void setOrders(List<Order> orders);
-    public Order cancelOrder(Long id);
+    Order cancelOrder(Long id);
     Order getOrder(Long id);
     List<Order> getOrders();
     Order setOrder(Order order);

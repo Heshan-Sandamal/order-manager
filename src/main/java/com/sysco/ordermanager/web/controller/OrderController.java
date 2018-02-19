@@ -32,7 +32,7 @@ public class OrderController {
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    @PostMapping("/add")
     public ResponseEntity<Order> setOrder(@RequestBody Order order){
         Order newOrder = orderService.setOrder(order);
         return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
